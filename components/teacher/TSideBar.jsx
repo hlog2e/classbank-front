@@ -14,7 +14,7 @@ export default function TSideBar() {
       {/*---------아래부터는 모바일---------*/}
 
       <div>
-        <header className="w-screen p-4 h-14">
+        <header className="block w-screen p-4 h-14 md:hidden">
           <div
             className="block h-8 rounded-md w-7 md:hidden hover:bg-slate-200"
             onClick={() => {
