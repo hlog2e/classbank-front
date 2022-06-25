@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function Student() {
   const router = useRouter();
   useEffect(() => {
-    router.push("/teacher/home");
+    router.replace("/teacher/home");
   }, []);
   //  return(<div></div>);
 }

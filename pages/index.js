@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import NavBar from "../components/landing/NavBar";
 import Logo from "../components/Logo";
 
@@ -18,13 +19,16 @@ export default function Home() {
             <p className="">학생들에게 경제관념을 심어주는건 어떨까요?</p>
             <br className="" />
             <div className="flex flex-col justify-between my-4 mt-3 text-center lg:justify-start lg:flex-row h-28 lg:h-fit lg:max-w-none">
-              <a className=" font-light px-9 py-3   mx-1 text-white rounded-full bg-gradient-to-l from-[#56CCF2] to-[#2F80ED]">
-                학생 앱 실행
-              </a>
-
-              <a className="py-3 mx-1 font-light text-white bg-gray-400 rounded-full px-9">
-                선생님 바로가기
-              </a>
+              <Link href="/student">
+                <a className=" font-light px-9 py-3   mx-1 text-white rounded-full bg-gradient-to-l from-[#56CCF2] to-[#2F80ED]">
+                  학생 앱 실행
+                </a>
+              </Link>
+              <Link href="/teacher">
+                <a className="py-3 mx-1 font-light text-white bg-gray-400 rounded-full px-9">
+                  선생님 바로가기
+                </a>
+              </Link>
             </div>
           </div>
           <div className="p-4">
