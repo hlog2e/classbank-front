@@ -51,7 +51,7 @@ export default function HomePanel() {
           )}
         </div>
         <div className="h-48 p-6 m-2 min-w-[170px] bg-white flex-1 drop-shadow-xl rounded-3xl">
-          <h1 className="text-2xl font-bold">판매중인 상품</h1>
+          <h1 className="text-xl font-bold">판매중인 상품</h1>
           <p className="mt-6 text-5xl font-semibold">10개</p>
         </div>
         <div className="h-48 p-6 m-2 min-w-[170px]  bg-white  flex-1 drop-shadow-xl rounded-3xl">
@@ -93,7 +93,7 @@ export default function HomePanel() {
           )}
         </div>
         <div className="h-48 p-6 m-2 min-w-[170px] flex flex-col justify-between  bg-white    flex-1 drop-shadow-xl rounded-3xl">
-          <h1 className="text-2xl font-bold">이자 지급 주기</h1>
+          <h1 className="text-xl font-bold">이자 지급 주기</h1>
           {!onChangeEzaTerm ? (
             <>
               <p className="text-4xl font-semibold ">{ezaTerm}일</p>
