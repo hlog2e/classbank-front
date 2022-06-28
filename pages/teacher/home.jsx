@@ -15,11 +15,13 @@ export default function TeacherHome() {
   });
   const noticeDummy = [
     {
+      key: "asdfdsfsd-123123-231",
       title: "1차 업데이트 패치노트",
       index: "블라블라",
       date: "2022-02-07",
     },
     {
+      key: "fdalsjkfj9001-123321123",
       title: "2차 업데이트 패치노트",
       index: "블라블라",
       date: "2022-02-08",
