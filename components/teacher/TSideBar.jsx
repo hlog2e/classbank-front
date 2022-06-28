@@ -44,8 +44,9 @@ function SideMenu() {
   const router = useRouter();
   const menuList = [
     { id: 1, name: "홈", iconPath: "", path: "/teacher/home" },
-    { id: 2, name: "학생 관리", iconPath: "", path: "/teacher/item" },
-    { id: 3, name: "상품 관리", iconPath: "", path: "/teacher/item2" },
+    { id: 2, name: "자산 관리", iconPath: "", path: "/teacher/manage/money" },
+    { id: 3, name: "학생 관리", iconPath: "", path: "/teacher/manage/student" },
+    { id: 4, name: "상품 관리", iconPath: "", path: "/teacher/manage/item" },
   ];
   return (
     <div>
