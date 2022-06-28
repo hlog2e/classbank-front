@@ -101,7 +101,7 @@ export default function HomePanel(props) {
             </>
           )}
         </div>
-        <div className="h-48 p-6 m-2 min-w-[170px] flex flex-col justify-between  bg-white    flex-1 drop-shadow-xl rounded-3xl">
+        <div className="h-48 p-6 m-2 min-w-[170px] flex flex-col justify-between  bg-white flex-1 drop-shadow-xl rounded-3xl">
           <h1 className="text-xl font-bold">이자 지급 주기</h1>
           {!onChangeEzaTerm ? (
             <>

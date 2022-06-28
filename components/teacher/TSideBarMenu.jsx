@@ -8,6 +8,12 @@ export default function TSideBarMenu() {
     { id: 2, name: "자산 관리", iconPath: "", path: "/teacher/manage/money" },
     { id: 3, name: "학생 관리", iconPath: "", path: "/teacher/manage/student" },
     { id: 4, name: "상품 관리", iconPath: "", path: "/teacher/manage/item" },
+    {
+      id: 5,
+      name: "복권 관리 (개발 중)",
+      iconPath: "",
+      path: "/teacher/manage/lotto",
+    },
   ];
   return (
     <>
