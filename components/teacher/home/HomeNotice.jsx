@@ -6,7 +6,9 @@ export default function HomeNotice(props) {
         <hr width="100%" className="mt-2" />
         <div className="h-[95%] my-2 overflow-scroll ">
           {props.noticeData.map((_noticeData) => {
-            return <NoticeItem noticeData={_noticeData} />;
+            return (
+              <NoticeItem key={_noticeData.key} noticeData={_noticeData} />
+            );
           })}
         </div>
       </div>
