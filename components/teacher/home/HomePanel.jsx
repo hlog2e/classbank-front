@@ -4,9 +4,7 @@ import Link from "next/link";
 
 export default function HomePanel(props) {
   const [onChangeMoneyName, setOnChangeMoneyName] = useState(false);
-
   const [onChangeEza, setOnChangeEza] = useState(false);
-
   const [onChangeEzaTerm, setOnChangeEzaTerm] = useState(false);
   return (
     <>
