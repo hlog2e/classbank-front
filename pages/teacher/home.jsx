@@ -26,13 +26,43 @@ export default function TeacherHome() {
       index: "블라블라",
       date: "2022-02-08",
     },
+    {
+      key: "fdalsjkfj9001-123321123",
+      title: "2차 업데이트 패치노트",
+      index: "블라블라",
+      date: "2022-02-08",
+    },
+    {
+      key: "fdalsjkfj9001-123321123",
+      title: "2차 업데이트 패치노트",
+      index: "블라블라",
+      date: "2022-02-08",
+    },
+    {
+      key: "fdalsjkfj9001-123321123",
+      title: "2차 업데이트 패치노트",
+      index: "블라블라",
+      date: "2022-02-08",
+    },
+    {
+      key: "fdalsjkfj9001-123321123",
+      title: "2차 업데이트 패치노트",
+      index: "블라블라",
+      date: "2022-02-08",
+    },
+    {
+      key: "fdalsjkfj9001-123321123",
+      title: "2차 업데이트 패치노트",
+      index: "블라블라",
+      date: "2022-02-08",
+    },
   ];
 
   useEffect(() => {
     console.log(panelData);
   }, [panelData]);
   return (
-    <div className="flex flex-col lg:h-screen lg:flex-row bg-neutral-100">
+    <div className="flex flex-col h-screen lg:flex-row bg-neutral-100">
       <TSideBar />
       <section className="flex flex-col w-full overflow-scroll lg:w-[calc(100vw-288px)]">
         <HomeHeader />
