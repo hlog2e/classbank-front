@@ -8,16 +8,16 @@ export default function BalanceChangePanel(props) {
   const [changeBalanceType, setChangeBalanceType] = useState("plus");
 
   let selectedArray = [];
-  props.selectedStudents.map((_item) => {
+  props.selectedStudent.map((_item) => {
     selectedArray.push(_item.studentName);
   });
 
   return (
     <section className="">
-      <h1 className="px-12 mt-6 text-2xl font-bold text-gray-400 md:px-20 md:text-3xl md:mt-28">
+      <h1 className="px-12 mt-6 text-2xl font-bold text-gray-400 md:px-20 md:text-3xl md:mt-20">
         {selectedArray.join(", ")}
       </h1>
-      <div className="flex flex-col px-12 md:px-20 max-w-[500px] w-full ">
+      <div className="flex flex-col px-12 md:px-20  max-w-[450px] md:w-[450px]">
         <h1 className="mt-6 text-4xl font-bold md:text-5xl">학생(들) 에게</h1>
         <div className="flex mt-5">
           <input

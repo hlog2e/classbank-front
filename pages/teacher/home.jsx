@@ -13,7 +13,8 @@ export default function TeacherHome() {
     eza: "10",
     ezaTerm: "7",
   });
-  const noticeDummy = [
+  //이것도 더미
+  const [noticeData, setNoticeData] = useState([
     {
       key: "asdfdsfsd-123123-231",
       title: "1차 업데이트 패치노트",
@@ -56,7 +57,7 @@ export default function TeacherHome() {
       index: "블라블라",
       date: "2022-02-08",
     },
-  ];
+  ]);
 
   useEffect(() => {
     console.log(panelData);
@@ -64,10 +65,10 @@ export default function TeacherHome() {
   return (
     <div className="flex flex-col h-screen lg:flex-row bg-neutral-100">
       <TSideBar />
-      <section className="flex flex-col w-full overflow-scroll lg:w-[calc(100vw-288px)]">
+      <section className="flex flex-col w-full overflow-scroll lg:w-[calc(100vw-256px)]">
         <HomeHeader />
         <HomePanel panelData={panelData} setPanelData={setPanelData} />
-        <HomeNotice noticeData={noticeDummy} />
+        <HomeNotice noticeData={noticeData} />
       </section>
     </div>
   );

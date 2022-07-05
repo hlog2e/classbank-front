@@ -22,14 +22,14 @@ export default function TSideBarMenu() {
           <div className="text-2xl border-b border-b-slate-300 ">
             <Logo />
           </div>
-          <p className=" text-slate-500">선생님 페이지</p>
+          <p className="font-medium  text-slate-500">선생님 페이지</p>
         </div>
         {menuList.map((item) => {
           return (
             <div
               key={item.id}
               className={
-                "flex px-4 py-3 m-4 font-semibold cursor-pointer hover:text-blue-500 rounded-xl hover:bg-blue-200 " +
+                "flex px-4 py-3 m-4   font-medium  cursor-pointer hover:text-blue-500 rounded-xl hover:bg-blue-200 " +
                 (item.path === router.pathname
                   ? "text-blue-500 bg-blue-200"
                   : "text-black")
