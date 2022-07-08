@@ -42,6 +42,7 @@ export default function StudentTable(props) {
             {props.studentsInfo.map((item) => {
               return (
                 <StudentTableItem
+                  key={item.id}
                   studentData={item}
                   selectedStudent={props.selectedStudent}
                   handleSelectedStudents={props.handleSelectedStudents}
