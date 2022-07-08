@@ -6,7 +6,7 @@ export default function HomeHeader() {
   const [onChangeBankName, setOnChangeBankName] = useState(false);
   return (
     <>
-      <header className="flex items-center py-12 mx-10 w-fit ">
+      <header className="flex items-center py-12 mx-8 md:mx-16 w-fit ">
         {!onChangeBankName ? (
           <>
             <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-l from-[#56CCF2] to-[#2F80ED]">

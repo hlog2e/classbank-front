@@ -6,7 +6,7 @@ export default function TSideBar() {
 
   return (
     <>
-      <nav className="hidden w-64 h-screen shadow-lg lg:block bg-slate-200 rounded-l-3xl">
+      <nav className="hidden w-64 h-screen shadow-lg lg:block bg-slate-200 ">
         <TSideBarMenu />
       </nav>
 
@@ -30,7 +30,7 @@ export default function TSideBar() {
         </header>
         {/* 아래는 모바일 사이드 메뉴 */}
         {mobileSideBarOpened ? (
-          <nav className=" h-[calc(100vh-112px);] shadow  bg-slate-200 rounded-l-3xl w-screen absolute z-50 top-14">
+          <nav className=" h-[calc(100vh-56px);] shadow  bg-slate-200 rounded-t-3xl  w-screen absolute z-50 top-14">
             <TSideBarMenu />
           </nav>
         ) : null}

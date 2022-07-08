@@ -32,7 +32,7 @@ export default function StudentSelectList(props) {
               {!selectedAll ? "전체선택" : "전체해제"}
             </button>
           </div>
-          <div>
+          <div className="flex items-center">
             <button
               onClick={() => {
                 setSortBy("number");
@@ -49,6 +49,7 @@ export default function StudentSelectList(props) {
             >
               학번순
             </button>
+            <hr className="w-[1px] h-4 bg-slate-300" />
             <button
               onClick={() => {
                 setSortBy("balance");

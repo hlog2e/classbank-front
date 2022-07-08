@@ -1,9 +1,9 @@
 import StudentTable from "../../../components/teacher/manage/student/StudentTable";
 import TSideBar from "../../../components/teacher/TSideBar";
 import { useState } from "react";
+
 export default function Student() {
   const [selectedStudent, setSelectedStudents] = useState([]);
-
   function handleSelectedStudents(_selId) {
     if (selectedStudent.some((item) => item.id === _selId)) {
       setSelectedStudents(
