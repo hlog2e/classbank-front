@@ -5,7 +5,7 @@ import Logo from "../components/Logo";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="bg-white ">
       <NavBar />
       <section className="md:h-[500px] h-[600px]   px-8 md:px-20 flex items-center justify-center w-full ">
         <div className=" w-[1100px] h-[450px]  md:flex-row flex-col flex justify-between items-center ">

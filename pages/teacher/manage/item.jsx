@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PendingItemListPanel from "../../../components/teacher/manage/item/PendingItemListPanel";
+import PurchasePendingList from "../../../components/teacher/manage/item/PurchasePendigList";
 import SellingItemListPanel from "../../../components/teacher/manage/item/SellingItemListPanel";
 import TSideBar from "../../../components/teacher/TSideBar";
 export default function Item() {
@@ -103,15 +104,39 @@ export default function Item() {
       itemPrice: "10000",
     },
   ]);
+  const [purchaseItems, setPurchaseItems] = useState([
+    {
+      purchaseId: "dffsdaddd",
+      itemName: "급식 먼저 먹기",
+      purchaserNumber: "2507",
+      purchaserName: "김홍록",
+      purchaseDate: "2022-02-07 15:35:37",
+    },
+    {
+      purchaseId: "dffsdaddd",
+      itemName: "급식 먼저 먹기",
+      purchaserNumber: "2507",
+      purchaserName: "김홍록",
+      purchaseDate: "2022-02-07 15:35:37",
+    },
+    {
+      purchaseId: "dffsdaddd",
+      itemName: "급식 먼저 먹기",
+      purchaserNumber: "2507",
+      purchaserName: "김홍록",
+      purchaseDate: "2022-02-07 15:35:37",
+    },
+  ]);
   return (
     <div className="flex flex-col lg:flex-row bg-neutral-100">
       <TSideBar />
-      <section className="w-full lg:ml-64 overflow-scroll ">
+      <section className="w-full overflow-scroll lg:ml-64 ">
         <h1 className="mx-12 mt-8 text-5xl font-bold md:mx-20 md:mt-20">
           아이템
         </h1>
         <SellingItemListPanel sellingItems={sellingItems} />
         <PendingItemListPanel pendingItems={pendingItems} />
+        <PurchasePendingList purchaseItems={purchaseItems} />
       </section>
     </div>
   );

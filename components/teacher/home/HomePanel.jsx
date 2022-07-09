@@ -53,13 +53,13 @@ export default function HomePanel(props) {
         </div>
         <div className="h-44 p-6 m-2 min-w-[170px] bg-white flex-1 drop-shadow-xl rounded-3xl">
           <h1 className="text-xl font-bold">판매중인 상품</h1>
-          <p className="mt-6 text-5xl font-semibold">
+          <p className="mt-6 text-4xl font-semibold">
             {props.panelData.sellingItemCount}개
           </p>
         </div>
         <div className="h-44 p-6 m-2 min-w-[170px]  bg-white  flex-1 drop-shadow-xl rounded-3xl">
-          <h1 className="text-xl font-bold">구입승인 대기 중</h1>
-          <p className="mt-6 text-5xl font-semibold">
+          <h1 className="text-lg font-bold">구입승인 대기 중</h1>
+          <p className="mt-6 text-4xl font-semibold">
             {props.panelData.pendingBuyItemCount}개
           </p>
         </div>
