@@ -25,11 +25,7 @@ function SellingItem(props) {
         </p>
       </div>
       <p className="text-xl font-bold text-slate-600">
-        가격 :{" "}
-        {props.itemData.itemPrice.replace(
-          /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-          ","
-        )}
+        가격 : {props.itemData.itemPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
       </p>
       <div className="flex">
         <button className="text-sm font-bold text-white w-full m-[2px] h-8 bg-blue-500 rounded-xl">

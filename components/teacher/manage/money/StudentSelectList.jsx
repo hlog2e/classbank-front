@@ -106,11 +106,7 @@ function StudentItem(props) {
           <div className="font-semibold">{props.studentData.name}</div>
         </div>
         <div className="text-sm text-slate-400">
-          잔액{" "}
-          {props.studentData.balance.replace(
-            /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-            ","
-          )}
+          잔액 {props.studentData.balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </div>
       </div>
     </div>
