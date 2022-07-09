@@ -1,8 +1,59 @@
 import { useState } from "react";
+import PendingItemListPanel from "../../../components/teacher/manage/item/PendingItemListPanel";
 import SellingItemListPanel from "../../../components/teacher/manage/item/SellingItemListPanel";
 import TSideBar from "../../../components/teacher/TSideBar";
 export default function Item() {
   const [sellingItems, setSellingItems] = useState([
+    {
+      itemId: "dsfajldf",
+      itemName: "급식먼저먹기 급식먼저먹기 급식먼저먹기",
+      itemDesc: "급식을 먼저먹는 아이템입니다.",
+      itemPrice: "10000",
+    },
+    {
+      itemId: "dsfajldfdd",
+      itemName: "과자",
+      itemDesc: "간식입니다.",
+      itemPrice: "10000",
+    },
+    {
+      itemId: "dsfajldfdd",
+      itemName: "과자",
+      itemDesc: "간식입니다.",
+      itemPrice: "10000",
+    },
+    {
+      itemId: "dsfajldfdd",
+      itemName: "과자",
+      itemDesc: "간식입니다.",
+      itemPrice: "10000",
+    },
+    {
+      itemId: "dsfajldfdd",
+      itemName: "과자",
+      itemDesc: "간식입니다.",
+      itemPrice: "10000",
+    },
+    {
+      itemId: "dsfajldfdd",
+      itemName: "과자",
+      itemDesc: "간식입니다.",
+      itemPrice: "10000",
+    },
+    {
+      itemId: "dsfajldfdd",
+      itemName: "과자",
+      itemDesc: "간식입니다.",
+      itemPrice: "10000",
+    },
+    {
+      itemId: "dsfajldfdd",
+      itemName: "과자",
+      itemDesc: "간식입니다.",
+      itemPrice: "10000",
+    },
+  ]);
+  const [pendingItems, setPendingItems] = useState([
     {
       itemId: "dsfajldf",
       itemName: "급식먼저먹기 급식먼저먹기 급식먼저먹기",
@@ -60,6 +111,7 @@ export default function Item() {
           아이템
         </h1>
         <SellingItemListPanel sellingItems={sellingItems} />
+        <PendingItemListPanel pendingItems={pendingItems} />
       </section>
     </div>
   );
