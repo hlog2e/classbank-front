@@ -63,9 +63,9 @@ export default function TeacherHome() {
     console.log(panelData);
   }, [panelData]);
   return (
-    <div className="flex flex-col h-screen lg:flex-row bg-neutral-100">
+    <div className="flex flex-col lg:flex-row bg-neutral-100">
       <TSideBar />
-      <section className="flex flex-col w-full overflow-scroll lg:w-[calc(100vw-256px)]">
+      <section className="flex flex-col w-full overflow-scroll lg:lg:ml-64 ">
         <HomeHeader />
         <HomePanel panelData={panelData} setPanelData={setPanelData} />
         <HomeNotice noticeData={noticeData} />

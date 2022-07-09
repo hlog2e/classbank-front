@@ -73,9 +73,9 @@ export default function Student() {
   ]);
 
   return (
-    <div className="flex flex-col h-screen lg:flex-row bg-neutral-100">
+    <div className="flex flex-col lg:flex-row bg-neutral-100">
       <TSideBar />
-      <section className=" overflow-scroll w-full lg:w-[calc(100vw-256px)]">
+      <section className="w-full lg:ml-64 overflow-scroll ">
         <section>
           <h1 className="px-10 mt-16 text-5xl font-bold lg:mt-20 lg:px-20">
             학생 관리

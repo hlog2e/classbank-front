@@ -67,9 +67,9 @@ export default function Money() {
   ]);
 
   return (
-    <div className="flex flex-col h-screen lg:flex-row bg-neutral-100">
+    <div className="flex flex-col lg:flex-row bg-neutral-100">
       <TSideBar />
-      <section className="flex flex-col  xl:flex-row overflow-scroll w-full lg:w-[calc(100vw-256px)]  ">
+      <section className="flex flex-col w-full lg:ml-64 overflow-scroll xl:flex-row ">
         <BalanceChangePanel selectedStudent={selectedStudent} />
         <StudentSelectList
           studentsData={studentsData}

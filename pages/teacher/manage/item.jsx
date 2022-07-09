@@ -6,8 +6,8 @@ export default function Item() {
   const [sellingItems, setSellingItems] = useState([
     {
       itemId: "dsfajldf",
-      itemName: "급식먼저먹기 급식먼저먹기 급식먼저먹기",
-      itemDesc: "급식을 먼저먹는 아이템입니다.",
+      itemName: "칼종례 요구 쿠폰",
+      itemDesc: "청소 미흡 등의 사유로 종례가 늦춰질 시 사용 가능",
       itemPrice: "10000",
     },
     {
@@ -104,9 +104,9 @@ export default function Item() {
     },
   ]);
   return (
-    <div className="flex flex-col h-screen lg:flex-row bg-neutral-100">
+    <div className="flex flex-col lg:flex-row bg-neutral-100">
       <TSideBar />
-      <section className=" overflow-scroll w-full lg:w-[calc(100vw-256px)]">
+      <section className="w-full lg:ml-64 overflow-scroll ">
         <h1 className="mx-12 mt-8 text-5xl font-bold md:mx-20 md:mt-20">
           아이템
         </h1>

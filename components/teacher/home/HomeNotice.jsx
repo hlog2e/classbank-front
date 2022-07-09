@@ -4,7 +4,7 @@ import Modal from "../../common/Modal";
 export default function HomeNotice(props) {
   return (
     <section className="flex lg:max-w-[700px] w-full md:px-16 md:py-10 py-6 ">
-      <div className="w-full m-2 bg-white drop-shadow-xl max-h-[500px] rounded-3xl p-8 ">
+      <div className="w-full m-2 bg-white  shadow-xl max-h-[500px] rounded-3xl p-8 ">
         <h1 className="text-2xl font-bold">공지</h1>
         <hr width="100%" className="mt-2" />
         <div className="h-[95%] my-2 overflow-scroll ">
