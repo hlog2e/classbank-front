@@ -32,7 +32,7 @@ export default function BottomNavBar() {
     <section className="fixed w-full max-w-[800px] h-20 rounded-t-3xl bg-white bottom-0 left-[50%] -translate-x-1/2 ">
       <div className="flex justify-around w-full h-16 px-4 py-1 drop-shadow-2xl">
         {navItems.map((item) => {
-          return <NavBarItem navItemData={item} />;
+          return <NavBarItem key={item.id} navItemData={item} />;
         })}
       </div>
     </section>

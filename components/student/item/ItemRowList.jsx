@@ -1,16 +1,38 @@
+import { useState } from "react";
+
 export default function ItemRowList(props) {
+  const [onSearch, setOnSearch] = useState(false);
+  const [filteredItems, SetFilteredItems] = useState([]);
+
+  function handleSearch(e) {
+    if (e.target.value === "") {
+      setOnSearch(false);
+    } else {
+      setOnSearch(true);
+      SetFilteredItems(
+        props.items.filter((item) => {
+          return item.itemName.search(e.target.value) > -1;
+        })
+      );
+    }
+  }
   return (
     <section className="">
       <section className="p-6">
         <input
           className="w-full h-12 p-4 text-sm font-semibold shadow-md outline-none focus:outline-blue-400 text-slate-500 rounded-xl"
           placeholder="아이템 이름으로 찾아보세요!"
+          onChange={handleSearch}
         />
       </section>
       <section className="flex py-2 overflow-auto">
-        {props.items.map((item) => {
-          return <Item key={item.itemId} itemData={item} />;
-        })}
+        {onSearch
+          ? filteredItems.map((item) => {
+              return <Item key={item.itemId} itemData={item} />;
+            })
+          : props.items.map((item) => {
+              return <Item key={item.itemId} itemData={item} />;
+            })}
       </section>
     </section>
   );

@@ -3,28 +3,32 @@ import BottomNavBar from "../../components/student/BottomNavBar";
 import ItemRowList from "../../components/student/item/ItemRowList";
 
 export default function StudentItem() {
+  const [bankInfo, setBancInfo] = useState({
+    bankName: "소영은행",
+    moneyName: "원",
+  });
   const [items, setItems] = useState([
     {
       itemId: "dsfajldfdd",
-      itemName: "과자4",
+      itemName: "자바스크립트",
       itemDesc: "간식입니다.",
       itemPrice: "10000",
     },
     {
       itemId: "dsfajldfdddd",
-      itemName: "과자3",
+      itemName: "자리바꾸기",
       itemDesc: "간식입니다.",
       itemPrice: "10000",
     },
     {
       itemId: "dsfajldddfdd",
-      itemName: "과자2",
+      itemName: "타입스크립트",
       itemDesc: "간식입니다.",
       itemPrice: "10000",
     },
     {
-      itemId: "dsfajddldfdd",
-      itemName: "과자1",
+      itemId: "dsfajlmkddldfdd",
+      itemName: "금천고등학교",
       itemDesc: "간식입니다.",
       itemPrice: "10000",
     },
@@ -34,6 +38,9 @@ export default function StudentItem() {
       <div className="max-w-[800px] w-full bg-neutral-100 overflow-auto pb-32">
         <h1 className="mt-12 ml-6 text-4xl font-bold">아이템</h1>
         <ItemRowList items={items} />
+        <section>
+          <div></div>
+        </section>
         <BottomNavBar />
       </div>
     </div>
