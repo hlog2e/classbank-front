@@ -30,8 +30,8 @@ export default function StudentHome() {
   ]);
 
   return (
-    <div className="flex justify-center w-screen bg-neutral-200">
-      <div className="max-w-[800px] h-[calc(100vh-80px)] overflow-auto w-full bg-neutral-100 ">
+    <div className="fixed top-0 bottom-0 left-0 right-0 flex justify-center bg-neutral-200">
+      <div className="max-w-[800px] w-full bg-neutral-100 overflow-auto pb-32">
         <BottomNavBar />
         <BalanceDisplay bankInfo={bankInfo} accountData={accountData} />
         <BalanceLogsPanel bankInfo={bankInfo} balanceLogs={balanceLogs} />
