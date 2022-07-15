@@ -1,3 +1,4 @@
+import moment from "moment";
 import { FaArrowCircleDown, FaArrowCircleUp } from "react-icons/fa";
 
 export default function BalanceLogsPanel(props) {
@@ -37,7 +38,9 @@ function LogItem(props) {
           </p>
         </div>
       </div>
-      <p className="p-2 text-xs text-slate-400">02월 02일 15:32</p>
+      <p className="p-2 text-xs text-slate-400">
+        {moment.unix(props.logData.timestamp).format("M월 D일 HH:MM")}
+      </p>
     </div>
   );
 }

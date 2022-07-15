@@ -19,6 +19,7 @@ export default function StudentHome() {
       transactionType: "plus",
       price: "10000",
       reason: "송금하기",
+      timestamp: 1657848366,
     },
     {
       senderName: "김홍록",
@@ -26,6 +27,7 @@ export default function StudentHome() {
       transactionType: "minus",
       price: "20000",
       reason: "송금하기",
+      timestamp: 1657848366,
     },
   ]);
 
