@@ -3,8 +3,10 @@ import moment from "moment";
 export default function ItemPendingList(props) {
   return (
     <section className="px-6 py-2">
-      <h1 className="p-2 font-semibold text-slate-500">구입 승인 대기중 1건</h1>
-      <div className="w-full p-3 bg-white min-h-[280px] rounded-2xl shadow-lg">
+      <h1 className="p-2 font-semibold text-slate-500">
+        구입 승인 대기중 {props.pendingItems.length}건
+      </h1>
+      <div className="w-full p-3 bg-white min-h-[280px] rounded-2xl shadow-md">
         {props.pendingItems.map((item) => {
           return <PendingItem key={item.itemId} itemData={item} />;
         })}

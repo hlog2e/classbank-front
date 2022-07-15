@@ -6,7 +6,7 @@ export default function BalanceLogsPanel(props) {
     <section>
       <div className="w-full px-5 ">
         <h1 className="p-2 text-lg font-bold text-slate-500">최근 소비내역</h1>
-        <div className="bg-white min-h-[300px] p-3 rounded-2xl">
+        <div className="bg-white shadow-md min-h-[300px] p-3 rounded-2xl">
           {props.balanceLogs.map((item) => {
             return <LogItem logData={item} bankInfo={props.bankInfo} />;
           })}
