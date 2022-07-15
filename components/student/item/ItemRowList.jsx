@@ -28,10 +28,22 @@ export default function ItemRowList(props) {
       <section className="flex py-2 overflow-auto">
         {onSearch
           ? filteredItems.map((item) => {
-              return <Item key={item.itemId} itemData={item} />;
+              return (
+                <Item
+                  key={item.itemId}
+                  itemData={item}
+                  moneyName={props.bankInfo.moneyName}
+                />
+              );
             })
           : props.items.map((item) => {
-              return <Item key={item.itemId} itemData={item} />;
+              return (
+                <Item
+                  key={item.itemId}
+                  itemData={item}
+                  moneyName={props.bankInfo.moneyName}
+                />
+              );
             })}
       </section>
     </section>
@@ -49,7 +61,7 @@ function Item(props) {
       </div>
       <div>
         <p className="py-4 text-xl font-bold text-slate-700">
-          {props.itemData.itemPrice} 원
+          {props.itemData.itemPrice} {props.moneyName}
         </p>
         <button className="w-full h-10 font-semibold text-white bg-blue-500 rounded-xl">
           구입하기
