@@ -11,7 +11,7 @@ export default function ItemRowList(props) {
       setOnSearch(true);
       SetFilteredItems(
         props.items.filter((item) => {
-          return item.itemName.search(e.target.value) > -1;
+          return item.itemName.includes(e.target.value);
         })
       );
     }
