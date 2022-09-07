@@ -6,7 +6,7 @@ export default function TSideBar() {
 
   return (
     <>
-      <nav className="fixed hidden w-64 h-screen shadow-lg lg:block bg-slate-200">
+      <nav className="fixed hidden w-64 h-screen bg-gray-200 shadow-lg lg:block">
         <TSideBarMenu />
       </nav>
 
