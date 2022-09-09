@@ -1,6 +1,11 @@
-import { FaHome, FaCommentDollar, FaShoppingBasket } from "react-icons/fa";
+import {
+  FaHome,
+  FaCommentDollar,
+  FaShoppingBasket,
+  FaQuestion,
+} from "react-icons/fa";
 import { GoThreeBars } from "react-icons/go";
-import { IoTicket } from "react-icons/io5";
+
 import { useRouter } from "next/router";
 import classNames from "classnames";
 
@@ -19,7 +24,7 @@ export default function BottomNavBar() {
       iconName: FaCommentDollar,
       path: "/student/send-money",
     },
-    { id: 4, name: "복권", iconName: IoTicket, path: "/student/lotto" },
+    { id: 4, name: "???", iconName: FaQuestion, path: "/student/lotto" },
     {
       id: 5,
       name: "더보기",
