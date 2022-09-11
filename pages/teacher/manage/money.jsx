@@ -67,17 +67,19 @@ export default function Money() {
   ]);
 
   return (
-    <div className="flex flex-col lg:flex-row bg-neutral-100">
-      <TSideBar />
-      <section className="flex flex-col w-full lg:ml-64 overflow-scroll xl:flex-row ">
-        <BalanceChangePanel selectedStudent={selectedStudent} />
-        <StudentSelectList
-          studentsData={studentsData}
-          selectedStudent={selectedStudent}
-          handleSelectedStudents={handleSelectedStudents}
-          handleSelectAll={handleSelectAll}
-        />
-      </section>
-    </div>
+    <AuthRoute>
+      <div className="flex flex-col lg:flex-row bg-neutral-100">
+        <TSideBar />
+        <section className="flex flex-col w-full overflow-scroll lg:ml-64 xl:flex-row ">
+          <BalanceChangePanel selectedStudent={selectedStudent} />
+          <StudentSelectList
+            studentsData={studentsData}
+            selectedStudent={selectedStudent}
+            handleSelectedStudents={handleSelectedStudents}
+            handleSelectAll={handleSelectAll}
+          />
+        </section>
+      </div>
+    </AuthRoute>
   );
 }

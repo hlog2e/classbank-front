@@ -128,16 +128,18 @@ export default function Item() {
     },
   ]);
   return (
-    <div className="flex flex-col lg:flex-row bg-neutral-100">
-      <TSideBar />
-      <section className="w-full overflow-scroll lg:ml-64 ">
-        <h1 className="mx-12 mt-8 text-5xl font-bold md:mx-20 md:mt-20">
-          아이템
-        </h1>
-        <SellingItemListPanel sellingItems={sellingItems} />
-        <PendingItemListPanel pendingItems={pendingItems} />
-        <PurchasePendingList purchaseItems={purchaseItems} />
-      </section>
-    </div>
+    <AuthRoute>
+      <div className="flex flex-col lg:flex-row bg-neutral-100">
+        <TSideBar />
+        <section className="w-full overflow-scroll lg:ml-64 ">
+          <h1 className="mx-12 mt-8 text-5xl font-bold md:mx-20 md:mt-20">
+            아이템
+          </h1>
+          <SellingItemListPanel sellingItems={sellingItems} />
+          <PendingItemListPanel pendingItems={pendingItems} />
+          <PurchasePendingList purchaseItems={purchaseItems} />
+        </section>
+      </div>
+    </AuthRoute>
   );
 }

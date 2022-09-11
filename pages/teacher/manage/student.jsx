@@ -73,21 +73,23 @@ export default function Student() {
   ]);
 
   return (
-    <div className="flex flex-col lg:flex-row bg-neutral-100">
-      <TSideBar />
-      <section className="w-full lg:ml-64 overflow-scroll ">
-        <section>
-          <h1 className="px-10 mt-16 text-5xl font-bold lg:mt-20 lg:px-20">
-            학생 관리
-          </h1>
+    <AuthRoute>
+      <div className="flex flex-col lg:flex-row bg-neutral-100">
+        <TSideBar />
+        <section className="w-full overflow-scroll lg:ml-64 ">
+          <section>
+            <h1 className="px-10 mt-16 text-5xl font-bold lg:mt-20 lg:px-20">
+              학생 관리
+            </h1>
+          </section>
+          <StudentTable
+            studentsInfo={studentsInfo}
+            selectedStudent={selectedStudent}
+            handleSelectedStudents={handleSelectedStudents}
+            handleSelectAll={handleSelectAll}
+          />
         </section>
-        <StudentTable
-          studentsInfo={studentsInfo}
-          selectedStudent={selectedStudent}
-          handleSelectedStudents={handleSelectedStudents}
-          handleSelectAll={handleSelectAll}
-        />
-      </section>
-    </div>
+      </div>
+    </AuthRoute>
   );
 }
