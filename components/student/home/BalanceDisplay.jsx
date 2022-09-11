@@ -9,7 +9,7 @@ export default function BalanceDisplay(props) {
             <p className="px-4 py-2 font-semibold">잔액</p>
             <h1 className="text-2xl font-bold text-center">
               {props.accountData.balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              {" " + props.bankInfo.moneyName}
+              {props.bankInfo.moneyName}
             </h1>
           </div>
           <button className="w-full h-12 mt-4 font-semibold text-white bg-blue-500 rounded-2xl">

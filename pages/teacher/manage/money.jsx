@@ -2,7 +2,7 @@ import { useState } from "react";
 import BalanceChangePanel from "../../../components/teacher/manage/money/BalanceChangePanel";
 import TSideBar from "../../../components/teacher/TSideBar";
 import StudentSelectList from "../../../components/teacher/manage/money/StudentSelectList";
-import AuthRoute from "../../middlewares/AuthRoute";
+import AuthRoute from "../../../middlewares/AuthRoute";
 
 export default function Money() {
   const [selectedStudent, setSelectedStudents] = useState([]);

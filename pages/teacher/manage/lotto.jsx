@@ -1,5 +1,5 @@
 import TSideBar from "../../../components/teacher/TSideBar";
-import AuthRoute from "../../middlewares/AuthRoute";
+import AuthRoute from "../../../middlewares/AuthRoute";
 
 export default function Lotto() {
   return (

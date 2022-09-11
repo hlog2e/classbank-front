@@ -1,9 +1,8 @@
 import { useState } from "react";
+import { comma } from "../../../../utils/comma";
 
 export default function BalanceChangePanel(props) {
   const [changeBalanceAmout, setChangeBalanceAmount] = useState("");
-  const [changeBalanceAmoutUnComma, setChangeBalanceAmountUnComma] =
-    useState("");
 
   const [changeBalanceType, setChangeBalanceType] = useState("plus");
 
@@ -24,12 +23,7 @@ export default function BalanceChangePanel(props) {
             className="w-48 text-3xl font-bold bg-transparent border-b-4 md:text-4xl focus:outline-none"
             value={changeBalanceAmout}
             onChange={(e) => {
-              e.target.value = e.target.value.replace(/\D/g, ""); //숫자 아닌 문자 입력방비
-              e.target.value = e.target.value.replace(/\,/g, ""); //콤마 중복 방지를 위한 모든 콤마 제거
-              setChangeBalanceAmount(
-                e.target.value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              );
-              setChangeBalanceAmountUnComma(e.target.value.replace(/\,/g, "")); //DB로 보내기 위한 UnComma 문자열
+              setChangeBalanceAmount(comma(e.target.value));
             }}
           />
           <h1 className="text-4xl font-bold md:text-5xl ">원을 </h1>
