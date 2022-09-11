@@ -3,6 +3,8 @@ import PendingItemListPanel from "../../../components/teacher/manage/item/Pendin
 import PurchasePendingList from "../../../components/teacher/manage/item/PurchasePendigList";
 import SellingItemListPanel from "../../../components/teacher/manage/item/SellingItemListPanel";
 import TSideBar from "../../../components/teacher/TSideBar";
+import AuthRoute from "../../middlewares/AuthRoute";
+
 export default function Item() {
   const [sellingItems, setSellingItems] = useState([
     {

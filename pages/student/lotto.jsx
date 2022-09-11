@@ -1,5 +1,6 @@
 import BottomNavBar from "../../components/student/BottomNavBar";
 import CommingSoon from "../etc/comming-soon";
+import AuthRoute from "../../middlewares/AuthRoute";
 
 export default function StudentLotto() {
   return (

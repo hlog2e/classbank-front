@@ -1,4 +1,5 @@
 import BottomNavBar from "../../components/student/BottomNavBar";
+import AuthRoute from "../../middlewares/AuthRoute";
 
 export default function StudentMore() {
   return (

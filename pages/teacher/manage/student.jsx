@@ -1,6 +1,7 @@
 import StudentTable from "../../../components/teacher/manage/student/StudentTable";
 import TSideBar from "../../../components/teacher/TSideBar";
 import { useState } from "react";
+import AuthRoute from "../../middlewares/AuthRoute";
 
 export default function Student() {
   const [selectedStudent, setSelectedStudents] = useState([]);

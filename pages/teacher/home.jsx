@@ -3,6 +3,7 @@ import HomePanel from "../../components/teacher/home/HomePanel";
 import HomeHeader from "../../components/teacher/home/HomeHeader";
 import { useEffect, useState } from "react";
 import HomeNotice from "../../components/teacher/home/HomeNotice";
+import AuthRoute from "../../middlewares/AuthRoute";
 
 export default function TeacherHome() {
   //API 연결전까지 더미데이터

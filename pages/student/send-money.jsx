@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BottomNavBar from "../../components/student/BottomNavBar";
+import AuthRoute from "../../middlewares/AuthRoute";
 
 export default function StudentSendMoney() {
   const [receiver, SetReceiver] = useState();

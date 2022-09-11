@@ -2,6 +2,7 @@ import { useState } from "react";
 import BottomNavBar from "../../components/student/BottomNavBar";
 import ItemPendingList from "../../components/student/item/ItemPendingList";
 import ItemRowList from "../../components/student/item/ItemRowList";
+import AuthRoute from "../../middlewares/AuthRoute";
 
 export default function StudentItem() {
   const [bankInfo, setBancInfo] = useState({
