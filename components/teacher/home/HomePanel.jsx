@@ -10,8 +10,8 @@ export default function HomePanel(props) {
   return (
     <>
       <section className="flex flex-wrap max-w-[1300px] md:px-16  lg:justify-start ">
-        <div className="h-44 p-6 m-2 min-w-[170px] flex justify-between flex-col bg-white  flex-1 drop-shadow-xl rounded-3xl">
-          <h1 className="text-2xl font-bold">화폐 단위</h1>
+        <div className="h-44 p-6 m-2 min-w-[176px] flex justify-between flex-col bg-white  flex-1 drop-shadow-xl rounded-3xl">
+          <h1 className="text-xl font-bold">화폐 단위</h1>
           {!onChangeMoneyName ? (
             <>
               <div className="flex items-center ">
@@ -52,20 +52,20 @@ export default function HomePanel(props) {
             </>
           )}
         </div>
-        <div className="h-44 p-6 m-2 min-w-[170px] bg-white flex-1 drop-shadow-xl rounded-3xl">
+        <div className="h-44 p-6 m-2 min-w-[176px] bg-white flex-1 drop-shadow-xl rounded-3xl">
           <h1 className="text-xl font-bold">판매중인 상품</h1>
           <p className="mt-6 text-4xl font-semibold">
             {props.panelData.sellingItemCount}개
           </p>
         </div>
-        <div className="h-44 p-6 m-2 min-w-[170px]  bg-white  flex-1 drop-shadow-xl rounded-3xl">
-          <h1 className="text-lg font-bold">구입승인 대기 중</h1>
+        <div className="h-44 p-6 m-2 min-w-[176px]  bg-white  flex-1 drop-shadow-xl rounded-3xl">
+          <h1 className="text-xl font-bold">구입승인 대기중</h1>
           <p className="mt-6 text-4xl font-semibold">
             {props.panelData.pendingBuyItemCount}개
           </p>
         </div>
-        <div className="h-44 p-6 m-2 min-w-[170px]  bg-white  flex flex-col justify-between   flex-1 drop-shadow-xl rounded-3xl">
-          <h1 className="text-2xl font-bold">이율</h1>
+        <div className="h-44 p-6 m-2 min-w-[176px]  bg-white  flex flex-col justify-between   flex-1 drop-shadow-xl rounded-3xl">
+          <h1 className="text-xl font-bold">이율</h1>
           {!onChangeEza ? (
             <>
               <p className="text-4xl font-semibold ">{props.panelData.eza}%</p>
@@ -101,7 +101,7 @@ export default function HomePanel(props) {
             </>
           )}
         </div>
-        <div className="h-44 p-6 m-2 min-w-[170px] flex flex-col justify-between  bg-white flex-1 drop-shadow-xl rounded-3xl">
+        <div className="h-44 p-6 m-2 min-w-[176px] flex flex-col justify-between  bg-white flex-1 drop-shadow-xl rounded-3xl">
           <h1 className="text-xl font-bold">이자 지급 주기</h1>
           {!onChangeEzaTerm ? (
             <>
@@ -140,7 +140,7 @@ export default function HomePanel(props) {
             </>
           )}
         </div>
-        <div className="h-44 p-6 m-2 min-w-[170px] flex flex-col justify-between  bg-white flex-1 drop-shadow-xl rounded-3xl">
+        <div className="h-44 p-6 m-2 min-w-[176px] flex flex-col justify-between  bg-white flex-1 drop-shadow-xl rounded-3xl">
           <h1 className="text-xl font-bold">학급 코드</h1>
           {!onChangeClassCode ? (
             <>
