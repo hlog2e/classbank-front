@@ -6,6 +6,7 @@ export default function HomePanel(props) {
   const [onChangeMoneyName, setOnChangeMoneyName] = useState(false);
   const [onChangeEza, setOnChangeEza] = useState(false);
   const [onChangeEzaTerm, setOnChangeEzaTerm] = useState(false);
+  const [onChangeClassCode, setOnChangeClassCode] = useState(false);
   return (
     <>
       <section className="flex flex-wrap max-w-[1300px] md:px-16  lg:justify-start ">
@@ -141,12 +142,42 @@ export default function HomePanel(props) {
         </div>
         <div className="h-44 p-6 m-2 min-w-[170px] flex flex-col justify-between  bg-white flex-1 drop-shadow-xl rounded-3xl">
           <h1 className="text-xl font-bold">학급 코드</h1>
-          <p className="text-4xl font-semibold ">5231</p>
-          <Link href="/teacher/manage/student">
-            <a className="py-2 font-semibold text-center text-white bg-blue-500 rounded-xl">
-              변경하기
-            </a>
-          </Link>
+          {!onChangeClassCode ? (
+            <>
+              <p className="text-4xl font-semibold ">
+                {props.panelData.classCode}
+              </p>
+              <button
+                onClick={() => {
+                  setOnChangeClassCode(!onChangeClassCode);
+                }}
+                className="py-2 font-semibold text-center text-white bg-blue-500 rounded-xl"
+              >
+                변경하기
+              </button>
+            </>
+          ) : (
+            <>
+              <input
+                className="px-2 py-1 text-xl font-bold bg-transparent border-b-2 focus:outline-none "
+                value={props.panelData.classCode}
+                onChange={(e) => {
+                  props.setPanelData({
+                    ...props.panelData,
+                    classCode: e.target.value,
+                  });
+                }}
+              />
+              <button
+                onClick={() => {
+                  setOnChangeClassCode(!onChangeClassCode);
+                }}
+                className="py-2 font-semibold text-center text-white bg-blue-500 rounded-xl"
+              >
+                변경완료
+              </button>
+            </>
+          )}
         </div>
       </section>
     </>

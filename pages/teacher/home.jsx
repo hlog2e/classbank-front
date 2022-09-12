@@ -13,6 +13,7 @@ export default function TeacherHome() {
     pendingBuyItemCount: "2",
     eza: "10",
     ezaTerm: "7",
+    classCode: "5231",
   });
   //이것도 더미
   const [noticeData, setNoticeData] = useState([
