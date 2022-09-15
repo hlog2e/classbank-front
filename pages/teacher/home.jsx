@@ -61,9 +61,6 @@ export default function TeacherHome() {
     },
   ]);
 
-  useEffect(() => {
-    console.log(panelData);
-  }, [panelData]);
   return (
     <AuthRoute>
       <div className="flex flex-col lg:flex-row bg-neutral-100">

@@ -10,4 +10,7 @@ function getObjectItem(_key) {
   return (parsedLocalStorageValue = JSON.parse(beforeObjectValue));
 }
 
-export { setObjectItem, getObjectItem };
+function deleteItem(_key) {
+  window.localStorage.removeItem(_key);
+}
+export { setObjectItem, getObjectItem, deleteItem };
