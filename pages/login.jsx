@@ -4,6 +4,7 @@ import Logo from "../components/Logo";
 import { useRouter } from "next/router";
 import { postLogin } from "../apis/auth";
 import { errorToast } from "../utils/toast";
+import { engAndNumRegexChecker } from "../utils/regex";
 
 export default function Login() {
   const [userData, setUserData] = useState({ user_id: "", password: "" });
@@ -43,8 +44,7 @@ export default function Login() {
               <input
                 value={userData.user_id}
                 onChange={(e) => {
-                  const regex = /^[a-zA-Z0-9]*$/;
-                  if (regex.test(e.target.value)) {
+                  if (engAndNumRegexChecker(e.target.value)) {
                     setUserData({ ...userData, user_id: e.target.value });
                   }
                 }}

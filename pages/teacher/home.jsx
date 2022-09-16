@@ -62,7 +62,7 @@ export default function TeacherHome() {
   ]);
 
   return (
-    <AuthRoute>
+    <AuthRoute isTeacherPage={true}>
       <div className="flex flex-col lg:flex-row bg-neutral-100">
         <TSideBar />
         <section className="flex flex-col w-full overflow-scroll lg:lg:ml-64 ">

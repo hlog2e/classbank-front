@@ -7,7 +7,7 @@ function setObjectItem(_key, _value) {
 
 function getObjectItem(_key) {
   const beforeObjectValue = window.localStorage.getItem(_key);
-  return (parsedLocalStorageValue = JSON.parse(beforeObjectValue));
+  return JSON.parse(beforeObjectValue);
 }
 
 function deleteItem(_key) {

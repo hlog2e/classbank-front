@@ -74,7 +74,7 @@ export default function Student() {
   ]);
 
   return (
-    <AuthRoute>
+    <AuthRoute isTeacherPage={true}>
       <div className="flex flex-col lg:flex-row bg-neutral-100">
         <TSideBar />
         <section className="w-full overflow-scroll lg:ml-64 ">
