@@ -1,26 +1,31 @@
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "../components/Logo";
-import axios from "axios";
-import { setObjectItem } from "../utils/localStorage";
 import { useRouter } from "next/router";
+import { postLogin } from "../apis/auth";
 
 export default function Login() {
   const [userData, setUserData] = useState({ user_id: "", password: "" });
   const router = useRouter();
 
-  const login = (_userData) => {
-    axios
-      .post("http://localhost:3001/auth/login", _userData)
-      .then((res) => {
-        console.log(res);
-        setObjectItem("USERDATA", res.data.user_data);
-        router.back();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    postLogin(userData)
+      .then((data) => {
+        if (data.user_data.type === "teacher") {
+          router.push("/teacher");
+        }
+        if (data.user_data.type === "student") {
+          router.push("/student");
+        }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.status === 403) {
+          setUserData({ user_id: "", password: "" });
+        }
       });
   };
+
   return (
     <div className="flex items-center w-full justify-center px-6 fixed top-[50%] -translate-y-1/2 ">
       <div className=" w-[400px]  ">
@@ -31,17 +36,12 @@ export default function Login() {
               <a className="text-sm text-blue-400">회원가입</a>
             </Link>
           </div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              login(userData);
-            }}
-          >
+          <form onSubmit={handleLogin}>
             <h1 className="mt-6 text-3xl font-semibold ">로그인</h1>
             <div className="py-6">
               <p className="px-2 py-1 text-sm text-slate-400">아이디</p>
               <input
-                value={userData.id}
+                value={userData.user_id}
                 onChange={(e) => {
                   const regex = /^[a-zA-Z0-9]*$/;
                   if (regex.test(e.target.value)) {
@@ -53,7 +53,7 @@ export default function Login() {
               <p className="px-2 py-1 mt-2 text-sm text-slate-400">비밀번호</p>
               <input
                 type="password"
-                value={userData.pw}
+                value={userData.password}
                 onChange={(e) => {
                   setUserData({ ...userData, password: e.target.value });
                 }}
