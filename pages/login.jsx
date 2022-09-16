@@ -3,6 +3,7 @@ import { useState } from "react";
 import Logo from "../components/Logo";
 import { useRouter } from "next/router";
 import { postLogin } from "../apis/auth";
+import { errorToast } from "../utils/toast";
 
 export default function Login() {
   const [userData, setUserData] = useState({ user_id: "", password: "" });
@@ -20,9 +21,8 @@ export default function Login() {
         }
       })
       .catch((err) => {
-        if (err.response.status === 403) {
-          setUserData({ user_id: "", password: "" });
-        }
+        setUserData({ user_id: "", password: "" });
+        errorToast(err.response.data.message);
       });
   };
 
