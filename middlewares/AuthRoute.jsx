@@ -18,7 +18,7 @@ export default function AuthRoute({ children, isTeacherPage }) {
             break;
           } else {
             setIsValid(false);
-            alert("선생님 페이지 접근권한 없음.");
+            alert("접근권한 없음.");
             router.back();
             break;
           }
@@ -28,7 +28,7 @@ export default function AuthRoute({ children, isTeacherPage }) {
             break;
           } else {
             setIsValid(false);
-            alert("학생 페이지 접근권한 없음.");
+            alert("접근권한 없음.");
             router.back();
             break;
           }
