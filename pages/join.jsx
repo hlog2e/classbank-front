@@ -19,7 +19,7 @@ export default function Join() {
     name: "",
     phone_number: "",
     type: "student",
-    classCode: "",
+    class_code: "",
   });
 
   const handleJoin = async (e) => {
@@ -127,10 +127,10 @@ export default function Join() {
               <p className="px-2 py-1 mt-4 text-sm text-slate-400">학급코드</p>
               <input
                 type="tel"
-                value={userData.classCode}
+                value={userData.class_code}
                 onChange={(e) => {
                   if (numRegexChecker(e.target.value)) {
-                    setUserData({ ...userData, classCode: e.target.value });
+                    setUserData({ ...userData, class_code: e.target.value });
                   }
                 }}
                 className="w-full h-12 px-3 border-none bg-slate-100 rounded-xl text-slate-500 focus:ring-1 focus:ring-blue-500"
