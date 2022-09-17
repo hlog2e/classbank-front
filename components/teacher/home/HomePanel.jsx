@@ -52,16 +52,25 @@ export default function HomePanel(props) {
             </>
           )}
         </div>
-        <div className="h-44 p-6 m-2 min-w-[176px] bg-white flex-1 drop-shadow-xl rounded-3xl">
-          <h1 className="text-xl font-bold">판매중인 상품</h1>
-          <p className="mt-6 text-4xl font-semibold">
-            {props.panelData.sellingItemCount}개
-          </p>
-        </div>
         <div className="h-44 p-6 m-2 min-w-[176px]  bg-white  flex-1 drop-shadow-xl rounded-3xl">
           <h1 className="text-xl font-bold">구입승인 대기중</h1>
-          <p className="mt-6 text-4xl font-semibold">
+          <p className="mt-3 text-4xl font-semibold">
             {props.panelData.pendingBuyItemCount}개
+          </p>
+          <p className="mt-2 text-sm text-slate-400">
+            <Link href="/teacher/manage/item">
+              <a className="font-bold">"상품 관리"</a>
+            </Link>
+            로 이동하여 확인하세요!
+          </p>
+        </div>
+        <div className="h-44 p-6 m-2 min-w-[176px] bg-white flex-1 drop-shadow-xl rounded-3xl">
+          <h1 className="text-xl font-bold">다음 이자 지급일</h1>
+          <p className="mt-3 text-3xl font-semibold">
+            {props.panelData.nextEzaDay}
+          </p>
+          <p className="mt-3 text-sm text-slate-400">
+            지급일 당일 오전 12시에 지급됩니다.
           </p>
         </div>
         <div className="h-44 p-6 m-2 min-w-[176px]  bg-white  flex flex-col justify-between   flex-1 drop-shadow-xl rounded-3xl">

@@ -4,16 +4,19 @@ import HomeHeader from "../../components/teacher/home/HomeHeader";
 import { useEffect, useState } from "react";
 import HomeNotice from "../../components/teacher/home/HomeNotice";
 import AuthRoute from "../../middlewares/AuthRoute";
+import { getTeacherBankInfo } from "../../apis/bank";
+import moment from "moment/moment";
 
 export default function TeacherHome() {
-  //API 연결전까지 더미데이터
+  const [bankId, setBankId] = useState("");
+  const [bankName, setBankName] = useState("은행");
   const [panelData, setPanelData] = useState({
-    moneyName: "메소",
-    sellingItemCount: "15",
-    pendingBuyItemCount: "2",
-    eza: "10",
-    ezaTerm: "7",
-    classCode: "5231",
+    moneyName: "",
+    pendingBuyItemCount: "",
+    eza: "",
+    ezaTerm: "",
+    nextEzaDay: "",
+    classCode: "",
   });
   //이것도 더미
   const [noticeData, setNoticeData] = useState([
@@ -61,12 +64,26 @@ export default function TeacherHome() {
     },
   ]);
 
+  useEffect(() => {
+    getTeacherBankInfo().then((bankData) => {
+      setBankId(bankData.id);
+      setBankName(bankData.name);
+      setPanelData({
+        ...panelData,
+        moneyName: bankData.money_name,
+        eza: bankData.eza,
+        ezaTerm: bankData.eza_term,
+        nextEzaDay: moment(bankData.next_eza_date).format("M월 D일"),
+        classCode: bankData.class_code,
+      });
+    });
+  }, []);
   return (
     <AuthRoute isTeacherPage={true}>
       <div className="flex flex-col lg:flex-row bg-neutral-100">
         <TSideBar />
         <section className="flex flex-col w-full overflow-scroll lg:lg:ml-64 ">
-          <HomeHeader />
+          <HomeHeader bankName={bankName} setBankName={setBankName} />
           <HomePanel panelData={panelData} setPanelData={setPanelData} />
           <HomeNotice noticeData={noticeData} />
         </section>

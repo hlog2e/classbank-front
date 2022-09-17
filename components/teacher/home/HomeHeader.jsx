@@ -1,8 +1,7 @@
 import { BsCheckLg, BsPencilSquare } from "react-icons/bs";
 import { useState } from "react";
 
-export default function HomeHeader() {
-  const [bankName, setBankName] = useState("OO은행");
+export default function HomeHeader(props) {
   const [onChangeBankName, setOnChangeBankName] = useState(false);
   return (
     <>
@@ -10,7 +9,7 @@ export default function HomeHeader() {
         {!onChangeBankName ? (
           <>
             <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-l from-[#56CCF2] to-[#2F80ED]">
-              {bankName}
+              {props.bankName}
             </h1>
             <BsPencilSquare
               onClick={() => {
@@ -29,11 +28,12 @@ export default function HomeHeader() {
           >
             <input
               className="px-2 py-1 text-4xl font-bold bg-transparent border-b-2 focus:outline-none w-44"
-              value={bankName}
+              value={props.bankName}
               onChange={(e) => {
-                setBankName(e.target.value);
+                props.setBankName(e.target.value);
               }}
             />
+            {/* 여기에 bankName 수정 시 DB로 보내는 로직 onClick에 추가 */}
             <button>
               <BsCheckLg className="ml-1 text-green-400" size="25" />
             </button>
