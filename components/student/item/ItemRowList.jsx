@@ -20,7 +20,7 @@ export default function ItemRowList(props) {
     <section className="">
       <section className="p-6">
         <input
-          className="w-full h-12 p-4 text-sm font-semibold shadow-md outline-none focus:outline-blue-400 text-slate-500 rounded-xl"
+          className="w-full h-12 p-4 text-sm font-semibold shadow-md outline-none appearance-none focus:ring-blue-400 focus:ring-2 text-slate-500 rounded-xl"
           placeholder="아이템 이름으로 찾아보세요!"
           onChange={handleSearch}
         />

@@ -43,6 +43,7 @@ export default function Login() {
             <input
               type="text"
               value={userData.user_id}
+              autoCapitalize="off"
               onChange={(e) => {
                 if (engAndNumRegexChecker(e.target.value)) {
                   setUserData({ ...userData, user_id: e.target.value });
