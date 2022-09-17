@@ -28,7 +28,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-screen px-6 py-12 ">
+    <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center px-6 py-12 ">
       <div className="flex flex-col max-w-[400px] w-full px-8 bg-white rounded-3xl drop-shadow-2xl">
         <div className="flex items-center justify-between py-5 text-lg">
           <Logo />
