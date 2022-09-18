@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import HomeNotice from "../../components/teacher/home/HomeNotice";
 import AuthRoute from "../../middlewares/AuthRoute";
 import { getTeacherBankInfo } from "../../apis/bank";
+import { getAllNotices } from "../../apis/notice";
 
 export default function TeacherHome() {
   const [bankId, setBankId] = useState("");
@@ -17,51 +18,7 @@ export default function TeacherHome() {
     nextEzaDay: "",
     classCode: "",
   });
-  //이것도 더미
-  const [noticeData, setNoticeData] = useState([
-    {
-      key: "asdfdsfsd-123123-231",
-      title: "1차 업데이트 패치노트",
-      index: "가나다라마바사아자차카타파하",
-      date: "2022-02-07",
-    },
-    {
-      key: "fdalsjkfj9001-12332221123",
-      title: "2차 업데이트 패치노트",
-      index: "가나다라마바사아자차카타파하213123123",
-      date: "2022-02-08",
-    },
-    {
-      key: "fdalsjkfj9001-1233232121123",
-      title: "2차 업데이트 패치노트",
-      index: "33890120932830291",
-      date: "2022-02-08",
-    },
-    {
-      key: "fdalsjkfj9001-1233213321123",
-      title: "2차 업데이트 패치노트",
-      index: "가나다라마바사아자차카타파하아리만린알ㅇㄹ니",
-      date: "2022-02-08",
-    },
-    {
-      key: "fdalsjkfj9001-1223123321123",
-      title: "2차 업데이트 패치노트",
-      index: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      date: "2022-02-08",
-    },
-    {
-      key: "fdalsjkfj9001-123321123",
-      title: "2차 업데이트 패치노트",
-      index: "가나다라마바사아자차카타파하",
-      date: "2022-02-08",
-    },
-    {
-      key: "fdalsjkfj9001-123321123",
-      title: "2차 업데이트 패치노트",
-      index: "가나다라마바사아자차카타파하",
-      date: "2022-02-08",
-    },
-  ]);
+  const [noticeData, setNoticeData] = useState([]);
 
   useEffect(() => {
     getTeacherBankInfo().then((bankData) => {
@@ -75,6 +32,9 @@ export default function TeacherHome() {
         nextEzaDay: bankData.next_eza_date,
         classCode: bankData.class_code,
       });
+    });
+    getAllNotices().then((notices) => {
+      setNoticeData(notices);
     });
   }, []);
   return (

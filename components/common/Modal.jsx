@@ -25,7 +25,7 @@ export default function Modal(props) {
             {props.modalData.title}
           </h1>
         </header>
-        <p className="p-5 ">{props.modalData.index}</p>
+        <pre className="p-5 tracking-tighter">{props.modalData.index}</pre>
         <p className="absolute text-sm bottom-4 right-5 text-slate-500">
           {props.modalData.date}
         </p>
