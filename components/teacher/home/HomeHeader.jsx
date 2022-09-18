@@ -1,5 +1,8 @@
 import { BsCheckLg, BsPencilSquare } from "react-icons/bs";
 import { useState } from "react";
+import { korAndEngRegexChecker } from "../../../utils/regex";
+import { updateTeacherBankInfo } from "../../../apis/bank";
+import { sucessToast } from "../../../utils/toast";
 
 export default function HomeHeader(props) {
   const [onChangeBankName, setOnChangeBankName] = useState(false);
@@ -24,16 +27,23 @@ export default function HomeHeader(props) {
             onSubmit={(e) => {
               e.preventDefault();
               setOnChangeBankName(!onChangeBankName);
+              updateTeacherBankInfo("name", {
+                bank_id: props.bankId,
+                data: props.bankName,
+              }).then(() => {
+                sucessToast("은행 이름을 변경하였습니다.");
+              });
             }}
           >
             <input
               className="px-2 py-1 text-4xl font-bold bg-transparent border-b-2 focus:outline-none w-44"
               value={props.bankName}
               onChange={(e) => {
-                props.setBankName(e.target.value);
+                if (korAndEngRegexChecker(e.target.value)) {
+                  props.setBankName(e.target.value);
+                }
               }}
             />
-            {/* 여기에 bankName 수정 시 DB로 보내는 로직 onClick에 추가 */}
             <button>
               <BsCheckLg className="ml-1 text-green-400" size="25" />
             </button>

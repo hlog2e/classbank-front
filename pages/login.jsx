@@ -4,7 +4,7 @@ import Logo from "../components/Logo";
 import { useRouter } from "next/router";
 import { postLogin } from "../apis/auth";
 import { errorToast } from "../utils/toast";
-import { engAndNumRegexChecker } from "../utils/regex";
+import { lowEngAndNumRegexChecker } from "../utils/regex";
 
 export default function Login() {
   const [userData, setUserData] = useState({ user_id: "", password: "" });
@@ -23,7 +23,11 @@ export default function Login() {
     } catch (err) {
       console.log(err);
       setUserData({ user_id: "", password: "" });
-      errorToast(err.response.data.message);
+      if (err.response.data) {
+        errorToast(err.response.data.message);
+      } else {
+        errorToast("회원가입 중 오류가 발생하였습니다.");
+      }
     }
   };
 
@@ -45,7 +49,7 @@ export default function Login() {
               value={userData.user_id}
               autoCapitalize="off"
               onChange={(e) => {
-                if (engAndNumRegexChecker(e.target.value)) {
+                if (lowEngAndNumRegexChecker(e.target.value)) {
                   setUserData({ ...userData, user_id: e.target.value });
                 }
               }}

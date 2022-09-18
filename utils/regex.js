@@ -1,5 +1,9 @@
+export const lowEngAndNumRegexChecker = (_value) => {
+  const engAndNumRegex = /^[a-z0-9]*$/; //소문자 영어랑 숫자만 허용
+  return engAndNumRegex.test(_value);
+};
 export const engAndNumRegexChecker = (_value) => {
-  const engAndNumRegex = /^[a-z0-9]*$/; //영어랑 숫자만 허용
+  const engAndNumRegex = /^[a-zA-Z0-9]*$/; //소문자 영어랑 숫자만 허용
   return engAndNumRegex.test(_value);
 };
 export const korAndEngRegexChecker = (_value) => {

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { postJoin } from "../apis/auth";
 import Logo from "../components/Logo";
 import {
-  engAndNumRegexChecker,
+  lowEngAndNumRegexChecker,
   korAndEngRegexChecker,
   numRegexChecker,
 } from "../utils/regex";
@@ -34,7 +34,11 @@ export default function Join() {
       }
     } catch (err) {
       console.log(err);
-      errorToast(err.response.data.message);
+      if (err.response.data) {
+        errorToast(err.response.data.message);
+      } else {
+        errorToast("회원가입 중 오류가 발생하였습니다.");
+      }
     }
   };
   return (
@@ -81,7 +85,7 @@ export default function Join() {
                 type="text"
                 value={userData.user_id}
                 onChange={(e) => {
-                  if (engAndNumRegexChecker(e.target.value)) {
+                  if (lowEngAndNumRegexChecker(e.target.value)) {
                     setUserData({ ...userData, user_id: e.target.value });
                   }
                 }}

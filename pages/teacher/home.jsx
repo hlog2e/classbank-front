@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import HomeNotice from "../../components/teacher/home/HomeNotice";
 import AuthRoute from "../../middlewares/AuthRoute";
 import { getTeacherBankInfo } from "../../apis/bank";
-import moment from "moment/moment";
 
 export default function TeacherHome() {
   const [bankId, setBankId] = useState("");
@@ -73,7 +72,7 @@ export default function TeacherHome() {
         moneyName: bankData.money_name,
         eza: bankData.eza,
         ezaTerm: bankData.eza_term,
-        nextEzaDay: moment(bankData.next_eza_date).format("M월 D일"),
+        nextEzaDay: bankData.next_eza_date,
         classCode: bankData.class_code,
       });
     });
@@ -83,8 +82,16 @@ export default function TeacherHome() {
       <div className="flex flex-col lg:flex-row bg-neutral-100">
         <TSideBar />
         <section className="flex flex-col w-full overflow-scroll lg:lg:ml-64 ">
-          <HomeHeader bankName={bankName} setBankName={setBankName} />
-          <HomePanel panelData={panelData} setPanelData={setPanelData} />
+          <HomeHeader
+            bankName={bankName}
+            setBankName={setBankName}
+            bankId={bankId}
+          />
+          <HomePanel
+            panelData={panelData}
+            setPanelData={setPanelData}
+            bankId={bankId}
+          />
           <HomeNotice noticeData={noticeData} />
         </section>
       </div>
