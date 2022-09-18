@@ -26,7 +26,7 @@ export default function Login() {
       if (err.response.data) {
         errorToast(err.response.data.message);
       } else {
-        errorToast("회원가입 중 오류가 발생하였습니다.");
+        errorToast("로그인 중 오류가 발생하였습니다.");
       }
     }
   };
