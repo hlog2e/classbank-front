@@ -71,7 +71,7 @@ export default function HomePanel(props) {
           </p>
           <p className="text-sm text-slate-400">
             <Link href="/teacher/manage/item">
-              <a className="font-bold">"상품 관리"</a>
+              <a className="font-bold">&quot;상품 관리&quot;</a>
             </Link>
             로 이동하여 확인하세요!
           </p>

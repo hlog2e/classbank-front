@@ -8,7 +8,9 @@ export default function BalanceLogsPanel(props) {
         <h1 className="p-2 text-lg font-bold text-slate-500">최근 소비내역</h1>
         <div className="bg-white shadow-md min-h-[300px] p-3 rounded-2xl">
           {props.balanceLogs.map((item) => {
-            return <LogItem logData={item} bankInfo={props.bankInfo} />;
+            return (
+              <LogItem key={item.id} logData={item} bankInfo={props.bankInfo} />
+            );
           })}
         </div>
       </div>
@@ -33,7 +35,7 @@ function LogItem(props) {
             {props.bankInfo.moneyName}
           </p>
           <p className="text-xs font-semibold text-slate-500">
-            {props.logData.reason} | {props.logData.senderName} ->
+            {props.logData.reason} | {props.logData.senderName} -&gt;
             {" " + props.logData.receiverName}
           </p>
         </div>

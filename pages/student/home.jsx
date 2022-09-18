@@ -15,6 +15,7 @@ export default function StudentHome() {
   });
   const [balanceLogs, setBalanceLogs] = useState([
     {
+      id: "dsfafasd",
       senderName: "선생님",
       receiverName: "김홍록",
       transactionType: "plus",
@@ -23,6 +24,7 @@ export default function StudentHome() {
       timestamp: 1657848366,
     },
     {
+      id: "dsadfssdfsfsf",
       senderName: "김홍록",
       receiverName: "학생1",
       transactionType: "minus",

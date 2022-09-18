@@ -2,11 +2,11 @@ import axios from "axios";
 import { deleteItem } from "../utils/localStorage";
 
 export const apiInstance = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
 export const apiAuthInstance = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   withCredentials: true,
 });
 

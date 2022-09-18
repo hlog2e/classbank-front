@@ -51,7 +51,7 @@ export default function StudentSendMoney() {
                 >
                   {classStudentsList.map((e) => {
                     return (
-                      <option value={e.id}>
+                      <option key={e.id} value={e.id}>
                         {e.number} {e.name}
                       </option>
                     );
