@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTeacherBankInfo } from "../../../apis/bank";
 import { getItemsTeacher } from "../../../apis/item";
+import { getAllPendingPurchases } from "../../../apis/purchase";
 import PendingItemListPanel from "../../../components/teacher/manage/item/PendingItemListPanel";
 import PurchasePendingList from "../../../components/teacher/manage/item/PurchasePendigList";
 import SellingItemListPanel from "../../../components/teacher/manage/item/SellingItemListPanel";
@@ -11,29 +12,7 @@ export default function Item() {
   const [bankData, setBankData] = useState({});
   const [items, setItems] = useState([]);
 
-  const [purchaseItems, setPurchaseItems] = useState([
-    {
-      purchaseId: "dffsdaddd",
-      itemName: "급식 먼저 먹기",
-      purchaserNumber: "2507",
-      purchaserName: "김홍록",
-      purchaseDate: "2022-02-07 15:35:37",
-    },
-    {
-      purchaseId: "dffsdaddd",
-      itemName: "급식 먼저 먹기",
-      purchaserNumber: "2507",
-      purchaserName: "김홍록",
-      purchaseDate: "2022-02-07 15:35:37",
-    },
-    {
-      purchaseId: "dffsdaddd",
-      itemName: "급식 먼저 먹기",
-      purchaserNumber: "2507",
-      purchaserName: "김홍록",
-      purchaseDate: "2022-02-07 15:35:37",
-    },
-  ]);
+  const [purchaseItems, setPurchaseItems] = useState([]);
 
   useEffect(() => {
     getTeacherBankInfo().then((_bankData) => {
@@ -41,6 +20,9 @@ export default function Item() {
       console.log(_bankData);
       getItemsTeacher(_bankData.id).then((items) => {
         setItems(items);
+      });
+      getAllPendingPurchases(_bankData.id).then((purchases) => {
+        setPurchaseItems(purchases);
       });
     });
   }, []);

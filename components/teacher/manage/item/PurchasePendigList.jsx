@@ -6,7 +6,7 @@ export default function PurchasePendingList(props) {
       </h1>
       <div className="bg-white md:w-[600px] w-full h-[500px] overflow-auto p-6 rounded-3xl">
         {props.purchaseItems.map((item) => {
-          return <PurchaseListItem purchaseData={item} key={item.purchaseId} />;
+          return <PurchaseListItem purchaseData={item} key={item.id} />;
         })}
       </div>
     </section>
@@ -18,14 +18,13 @@ function PurchaseListItem(props) {
     <div className="flex items-center justify-between w-full p-4 mb-2 h-14 rounded-2xl bg-neutral-100">
       <div className="flex flex-col items-start ">
         <p className="text-sm font-semibold md:text-md">
-          {props.purchaseData.purchaserNumber}{" "}
-          {props.purchaseData.purchaserName}
+          {props.purchaseData.buyer_number} {props.purchaseData.buyer_name}
         </p>
         <p className="text-xs font-semibold md:text-sm text-slate-400">
-          {props.purchaseData.itemName}
+          {props.purchaseData.item_name}
         </p>
         {/* <p className="ml-5 text-[8px] md:text-xs text-slate-400">
-          {props.purchaseData.purchaseDate}
+          {props.purchaseData} //createAt
         </p> */}
       </div>
       <div>
