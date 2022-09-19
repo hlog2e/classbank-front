@@ -6,19 +6,15 @@ import HomeNotice from "../../components/teacher/home/HomeNotice";
 import AuthRoute from "../../middlewares/AuthRoute";
 import { getTeacherBankInfo } from "../../apis/bank";
 import { getAllNotices } from "../../apis/notice";
+import { getCountPurchases } from "../../apis/purchase";
 
 export default function TeacherHome() {
   const [bankId, setBankId] = useState("");
   const [bankName, setBankName] = useState("은행");
-  const [panelData, setPanelData] = useState({
-    moneyName: "",
-    pendingBuyItemCount: "",
-    eza: "",
-    ezaTerm: "",
-    nextEzaDay: "",
-    classCode: "",
-  });
+  const [panelData, setPanelData] = useState({});
   const [noticeData, setNoticeData] = useState([]);
+
+  const [pendingItemsCount, setPendingItemsCount] = useState(0);
 
   useEffect(() => {
     getTeacherBankInfo().then((bankData) => {
@@ -31,6 +27,9 @@ export default function TeacherHome() {
         ezaTerm: bankData.eza_term,
         nextEzaDay: bankData.next_eza_date,
         classCode: bankData.class_code,
+      });
+      getCountPurchases(bankData.id).then((count) => {
+        setPendingItemsCount(count);
       });
     });
     getAllNotices().then((notices) => {
@@ -50,6 +49,7 @@ export default function TeacherHome() {
           <HomePanel
             panelData={panelData}
             setPanelData={setPanelData}
+            pendingItemsCount={pendingItemsCount}
             bankId={bankId}
           />
           <HomeNotice noticeData={noticeData} />

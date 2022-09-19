@@ -66,9 +66,7 @@ export default function HomePanel(props) {
         </div>
         <div className="h-44 flex flex-col justify-between p-6 m-2 min-w-[176px]  bg-white  flex-1 drop-shadow-xl rounded-3xl">
           <h1 className="text-xl font-bold">구입승인 대기중</h1>
-          <p className="text-3xl font-semibold ">
-            {props.panelData.pendingBuyItemCount}개
-          </p>
+          <p className="text-3xl font-semibold ">{props.pendingItemsCount}개</p>
           <p className="text-sm text-slate-400">
             <Link href="/teacher/manage/item">
               <a className="font-bold">&quot;상품 관리&quot;</a>
