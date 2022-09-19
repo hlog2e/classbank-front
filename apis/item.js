@@ -14,3 +14,10 @@ export const postEditItemStatus = async (_itemid, _status) => {
   });
   return res.data;
 };
+
+export const postItemDelete = async (_itemid) => {
+  const res = await apiAuthInstance.post("/item/teacher/delete", {
+    item_id: _itemid,
+  });
+  return res.data;
+};

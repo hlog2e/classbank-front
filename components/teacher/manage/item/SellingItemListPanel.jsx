@@ -1,5 +1,5 @@
 import { numToStringAndComma } from "../../../../utils/comma";
-import { postEditItemStatus } from "../../../../apis/item";
+import { postEditItemStatus, postItemDelete } from "../../../../apis/item";
 import { sucessToast } from "../../../../utils/toast";
 
 export default function SellingItemListPanel(props) {
@@ -66,7 +66,21 @@ function SellingItem(props) {
         >
           판매 중지
         </button>
-        <button className="text-sm font-bold text-slate-500 w-full m-[2px] h-8 bg-slate-300 rounded-xl">
+        <button
+          onClick={() => {
+            postItemDelete(props.item.id).then(() => {
+              sucessToast(props.item.name + "을(를) 삭제하였습니다!");
+              const changeObjIndex = props.itemsArray.findIndex(
+                (_obj) => _obj.id == props.item.id
+              );
+              let objDeletedArray = props.itemsArray;
+              objDeletedArray.splice(changeObjIndex, "1");
+
+              props.setItems([...objDeletedArray]);
+            });
+          }}
+          className="text-sm font-bold text-slate-500 w-full m-[2px] h-8 bg-slate-300 rounded-xl"
+        >
           삭제
         </button>
       </div>
