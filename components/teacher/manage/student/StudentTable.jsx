@@ -1,4 +1,12 @@
+import moment from "moment";
 import { useState } from "react";
+import { postEditUserInfoTeacher } from "../../../../apis/user";
+import {
+  korAndEngRegexChecker,
+  lowEngAndNumRegexChecker,
+  numRegexChecker,
+} from "../../../../utils/regex";
+import { sucessToast } from "../../../../utils/toast";
 
 export default function StudentTable(props) {
   return (
@@ -42,7 +50,7 @@ export default function StudentTable(props) {
             {props.studentsInfo.map((item) => {
               return (
                 <StudentTableItem
-                  key={item.id}
+                  key={item.user_uuid}
                   studentData={item}
                   selectedStudent={props.selectedStudent}
                   handleSelectedStudents={props.handleSelectedStudents}
@@ -63,7 +71,9 @@ function StudentTableItem(props) {
   function handleUpdateStudentInfo() {
     if (editing) {
       setEditing(false);
-      alert("db로 전송로직");
+      postEditUserInfoTeacher(studentData.user_uuid, studentData).then(() => {
+        sucessToast(studentData.name + " 학생의 데이터 수정을 완료했습니다.");
+      });
     } else {
       setEditing(true);
     }
@@ -75,10 +85,10 @@ function StudentTableItem(props) {
           className="text-blue-400 rounded bg-slate-200 border-slate-400 focus:ring-blue-500"
           type="checkbox"
           onChange={() => {
-            props.handleSelectedStudents(studentData.id);
+            props.handleSelectedStudents(studentData.user_uuid);
           }}
           checked={props.selectedStudent.some(
-            (item) => item.id === studentData.id
+            (item) => item.user_uuid === studentData.user_uuid
           )}
         ></input>
       </td>
@@ -88,7 +98,9 @@ function StudentTableItem(props) {
             className="w-full h-8 text-center rounded-lg bg-neutral-100"
             value={studentData.number}
             onChange={(e) => {
-              setStudentData({ ...studentData, number: e.target.value });
+              if (numRegexChecker(e.target.value)) {
+                setStudentData({ ...studentData, number: e.target.value });
+              }
             }}
           />
         ) : (
@@ -101,7 +113,9 @@ function StudentTableItem(props) {
             className="w-full h-8 text-center rounded-lg bg-neutral-100"
             value={studentData.name}
             onChange={(e) => {
-              setStudentData({ ...studentData, name: e.target.value });
+              if (korAndEngRegexChecker(e.target.value)) {
+                setStudentData({ ...studentData, name: e.target.value });
+              }
             }}
           />
         ) : (
@@ -112,30 +126,37 @@ function StudentTableItem(props) {
         {editing ? (
           <input
             className="w-full h-8 text-center rounded-lg bg-neutral-100"
-            value={studentData.userId}
+            value={studentData.user_id}
             onChange={(e) => {
-              setStudentData({ ...studentData, userId: e.target.value });
+              if (lowEngAndNumRegexChecker(e.target.value)) {
+                setStudentData({ ...studentData, user_id: e.target.value });
+              }
             }}
           />
         ) : (
-          <p>{studentData.userId}</p>
+          <p>{studentData.user_id}</p>
         )}
       </td>
       <td className="px-1 ">
         {editing ? (
           <input
             className="w-full h-8 text-center rounded-lg bg-neutral-100"
-            value={studentData.phoneNumber}
+            value={studentData.phone_number}
             onChange={(e) => {
-              setStudentData({ ...studentData, phoneNumber: e.target.value });
+              if (numRegexChecker(e.target.value)) {
+                setStudentData({
+                  ...studentData,
+                  phone_number: e.target.value,
+                });
+              }
             }}
           />
         ) : (
-          <p>{studentData.phoneNumber}</p>
+          <p>{studentData.phone_number}</p>
         )}
       </td>
       <td className="px-1 rounded-r-xl">
-        <p>2022-02-07</p>
+        <p>{moment(props.studentData.createdAt).format("YYYY-MM-DD")}</p>
       </td>
       <td className="px-1 rounded-r-xl">
         <button

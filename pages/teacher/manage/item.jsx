@@ -17,7 +17,6 @@ export default function Item() {
   useEffect(() => {
     getTeacherBankInfo().then((_bankData) => {
       setBankData(_bankData);
-      console.log(_bankData);
       getItemsTeacher(_bankData.id).then((items) => {
         setItems(items);
       });
