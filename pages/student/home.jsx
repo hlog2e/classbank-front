@@ -1,18 +1,15 @@
 import BottomNavBar from "../../components/student/BottomNavBar";
 import BalanceDisplay from "../../components/student/home/BalanceDisplay";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BalanceLogsPanel from "../../components/student/home/BalanceLogsPanel";
 import AuthRoute from "../../middlewares/AuthRoute";
+import { getUserInfoStudent } from "../../apis/user";
+import { getBankInfoStudent } from "../../apis/bank";
 
 export default function StudentHome() {
-  const [bankInfo, setBancInfo] = useState({
-    bankName: "소영은행",
-    moneyName: "원",
-  });
-  const [accountData, setAccountData] = useState({
-    name: "김홍록",
-    balance: "200000000000",
-  });
+  const [accountData, setAccountData] = useState({});
+  const [bankInfo, setBankInfo] = useState({});
+
   const [balanceLogs, setBalanceLogs] = useState([
     {
       id: "dsfafasd",
@@ -33,6 +30,18 @@ export default function StudentHome() {
       timestamp: 1657848366,
     },
   ]);
+
+  const getDataFromBackend = async () => {
+    const userData = await getUserInfoStudent();
+    setAccountData(userData);
+
+    const bankData = await getBankInfoStudent();
+    setBankInfo(bankData);
+  };
+
+  useEffect(() => {
+    getDataFromBackend();
+  }, []);
 
   return (
     <AuthRoute isTeacherPage={false}>

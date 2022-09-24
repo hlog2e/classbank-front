@@ -31,8 +31,8 @@ function LogItem(props) {
         <div>
           <p className="text-sm font-semibold">
             {props.logData.transactionType === "plus" ? "+" : "-"}
-            {props.logData.price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            {props.bankInfo.moneyName}
+            {props.logData.price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+            {props.bankInfo.money_name}
           </p>
           <p className="text-xs font-semibold text-slate-500">
             {props.logData.reason} | {props.logData.senderName} -&gt;

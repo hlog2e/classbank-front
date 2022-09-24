@@ -19,7 +19,7 @@ export default function AuthRoute({ children, isTeacherPage }) {
           } else {
             setIsValid(false);
             alert("접근권한 없음.");
-            router.back();
+            router.push("/app");
             break;
           }
         case false:
@@ -29,7 +29,7 @@ export default function AuthRoute({ children, isTeacherPage }) {
           } else {
             setIsValid(false);
             alert("접근권한 없음.");
-            router.back();
+            router.push("/app");
             break;
           }
       }

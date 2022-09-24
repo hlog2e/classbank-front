@@ -14,3 +14,8 @@ export const postEditUserInfoTeacher = async (_userUuid, _changeDataObj) => {
   });
   return res.data;
 };
+
+export const getUserInfoStudent = async () => {
+  const res = await apiAuthInstance.get("/user/student/info");
+  return res.data.user;
+};

@@ -12,3 +12,8 @@ export const updateTeacherBankInfo = async (_updateDataName, _updateData) => {
   );
   return res.data.bankData;
 };
+
+export const getBankInfoStudent = async () => {
+  const res = await apiAuthInstance.get("/bank/student/info");
+  return res.data.bankData;
+};

@@ -21,3 +21,11 @@ export const postItemDelete = async (_itemid) => {
   });
   return res.data;
 };
+
+export const postItemAdd = async (_bankId, _itemData) => {
+  const res = await apiAuthInstance.post("/item/teacher/add", {
+    bank_id: _bankId,
+    item_data: _itemData,
+  });
+  return res.data.item;
+};

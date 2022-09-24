@@ -6,7 +6,9 @@ import { getAllUserTeacher } from "../../../apis/user";
 import { getTeacherBankInfo } from "../../../apis/bank";
 
 export default function Student() {
+  const [studentsInfo, setStudentsInfo] = useState([]);
   const [selectedStudent, setSelectedStudents] = useState([]);
+
   function handleSelectedStudents(_selId) {
     if (selectedStudent.some((item) => item.user_uuid === _selId)) {
       setSelectedStudents(
@@ -30,26 +32,6 @@ export default function Student() {
       setSelectedStudents([]);
     }
   }
-
-  //더미데이터
-  const [studentsInfo, setStudentsInfo] = useState([
-    {
-      user_uuid: "d66fd2ec-0a5c-4803-a1ef-5b9e0ecfc845",
-      number: 2501,
-      name: "김홍록",
-      user_id: "ebs5231",
-      phone_number: "01073115490",
-      createdAt: "2022-02-01",
-    },
-    {
-      user_uuid: "08074c49-578f-4721-9c2e-187b2ccda8da",
-      number: 2505,
-      name: "김홍록",
-      user_id: "ebs5231",
-      phone_number: "01072115490",
-      createdAt: "2022-02-07",
-    },
-  ]);
 
   useEffect(() => {
     getTeacherBankInfo().then((_bankData) => {
