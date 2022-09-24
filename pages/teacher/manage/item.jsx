@@ -35,7 +35,7 @@ export default function Item() {
       <div className="flex flex-col lg:flex-row bg-neutral-100">
         <TSideBar />
         <section className="w-full overflow-scroll lg:ml-64 ">
-          <div className="flex items-center justify-between mx-12 md:mx-20 md:mt-20 ">
+          <div className="flex items-center justify-between px-12 mt-10 lg:px-20 lg:mt-20 ">
             <h1 className="text-5xl font-bold ">아이템</h1>
             <button
               onClick={() => {

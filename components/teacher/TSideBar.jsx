@@ -1,7 +1,8 @@
 import { useState } from "react";
 import TSideBarMenu from "./TSideBarMenu";
 import { MdOutlineLogout, MdOutlineSettings } from "react-icons/md";
-import Logo from "../Logo";
+import { postLogout } from "../../apis/auth";
+import { useRouter } from "next/router";
 
 export default function TSideBar() {
   const [mobileSideBarOpened, setMobileSideBarOpened] = useState(false);
@@ -16,7 +17,7 @@ export default function TSideBar() {
       {/*---------아래부터는 모바일---------*/}
 
       {/* 아래는 모바일 상단 NavBar */}
-      <header className="sticky top-0 z-50 w-full p-4 h-14 bg-neutral-100 lg:hidden">
+      <header className="sticky top-0 z-10 w-full p-4 h-14 bg-neutral-100 lg:hidden">
         <div
           className="block h-8 rounded-md w-7 lg:hidden hover:bg-neutral-100"
           onClick={() => {
@@ -42,6 +43,7 @@ export default function TSideBar() {
 }
 
 function BottomLogoutSection() {
+  const router = useRouter();
   return (
     <div className="flex items-center justify-between w-full h-20 p-4">
       <div className="font-semibold">
@@ -49,7 +51,14 @@ function BottomLogoutSection() {
         <p className="text-sm text-slate-400">hlog2e</p>
       </div>
       <div className="flex">
-        <button className="flex flex-col items-center justify-between text-red-500">
+        <button
+          onClick={() => {
+            postLogout().then(() => {
+              router.push("/");
+            });
+          }}
+          className="flex flex-col items-center justify-between text-red-500"
+        >
           <MdOutlineLogout className="w-6 h-6" />
           <p className="text-xs">로그아웃</p>
         </button>

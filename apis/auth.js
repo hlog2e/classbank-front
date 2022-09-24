@@ -1,5 +1,5 @@
 import { apiAuthInstance } from "./api";
-import { setObjectItem } from "../utils/localStorage";
+import { deleteItem, setObjectItem } from "../utils/localStorage";
 
 export const postLogin = async (_userData) => {
   const data = await apiAuthInstance
@@ -19,4 +19,11 @@ export const postJoin = async (_userData) => {
       return res.data;
     });
   return data.user_data;
+};
+
+export const postLogout = async (_userData) => {
+  const res = await apiAuthInstance.post("/auth/logout");
+  deleteItem("USERDATA");
+  alert("로그아웃 되었습니다.");
+  return res.data;
 };
