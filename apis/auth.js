@@ -21,7 +21,7 @@ export const postJoin = async (_userData) => {
   return data.user_data;
 };
 
-export const postLogout = async (_userData) => {
+export const postLogout = async () => {
   const res = await apiAuthInstance.post("/auth/logout");
   deleteItem("USERDATA");
   alert("로그아웃 되었습니다.");

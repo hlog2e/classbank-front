@@ -48,6 +48,15 @@ class ChannelService {
   shutdown() {
     window.ChannelIO("shutdown");
   }
+  hideMessenger() {
+    window.ChannelIO("hideMessenger");
+  }
+  showMessenger() {
+    window.ChannelIO("showMessenger");
+  }
+  hideChannelButton() {
+    window.ChannelIO("hideChannelButton");
+  }
 }
 
 export { ChannelService };

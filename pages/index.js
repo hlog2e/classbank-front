@@ -6,12 +6,12 @@ import { ChannelService } from "../components/common/ChannelTalk";
 
 export default function Home() {
   useEffect(() => {
-    const CTalk = new ChannelService();
-    CTalk.boot({
+    const CHTalk = new ChannelService();
+    CHTalk.boot({
       pluginKey: process.env.NEXT_PUBLIC_CHTALK_PUBLIC_KEY,
     });
     return () => {
-      CTalk.shutdown();
+      CHTalk.shutdown();
     };
   }, []);
   return (
