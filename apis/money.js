@@ -14,3 +14,14 @@ export const postChangeBalanceTeacher = async (
   });
   return res.data;
 };
+
+//아래는 학생
+
+export const postSendMoney = async (_receiver_id, _amount) => {
+  const res = await apiAuthInstance.post("/money/student/send-money", {
+    receiver_id: _receiver_id,
+    amount: _amount,
+  });
+
+  return res.data;
+};

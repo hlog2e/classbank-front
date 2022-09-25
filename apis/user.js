@@ -15,7 +15,14 @@ export const postEditUserInfoTeacher = async (_userUuid, _changeDataObj) => {
   return res.data;
 };
 
+//아래부터는 학생 API
+
 export const getUserInfoStudent = async () => {
   const res = await apiAuthInstance.get("/user/student/info");
   return res.data.user;
+};
+
+export const getSameBankStudents = async () => {
+  const res = await apiAuthInstance.get("/user/student/same-bank");
+  return res.data.students;
 };
