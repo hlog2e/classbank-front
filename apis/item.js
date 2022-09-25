@@ -29,3 +29,17 @@ export const postItemAdd = async (_bankId, _itemData) => {
   });
   return res.data.item;
 };
+
+export const postItemAllow = async (_itemData) => {
+  const res = await apiAuthInstance.post("/item/teacher/allow", {
+    item_data: _itemData,
+  });
+  return res.data;
+};
+
+export const postItemDeny = async (_itemData) => {
+  const res = await apiAuthInstance.post("/item/teacher/deny", {
+    item_data: _itemData,
+  });
+  return res.data;
+};

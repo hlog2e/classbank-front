@@ -35,7 +35,7 @@ export default function Item() {
       <div className="flex flex-col lg:flex-row bg-neutral-100">
         <TSideBar />
         <section className="w-full overflow-scroll lg:ml-64 ">
-          <div className="flex items-center justify-between px-12 mt-10 lg:px-20 lg:mt-20 ">
+          <div className="flex items-center justify-between px-12 mt-1 lg:px-20 lg:mt-20 ">
             <h1 className="text-5xl font-bold ">아이템</h1>
             <button
               onClick={() => {
@@ -66,7 +66,10 @@ export default function Item() {
             setItems={setItems}
             bankData={bankData}
           />
-          <PurchasePendingList purchaseItems={purchaseItems} />
+          <PurchasePendingList
+            purchaseItems={purchaseItems}
+            getDataFromBackend={getDataFromBackend}
+          />
         </section>
       </div>
     </AuthRoute>

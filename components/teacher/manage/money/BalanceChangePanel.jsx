@@ -26,7 +26,13 @@ export default function BalanceChangePanel(props) {
         props.getDataFromBackend();
       } catch (err) {
         console.log(err);
-        errorToast(err.response.data.message);
+        if (err.response.data) {
+          errorToast(err.response.data.message);
+        } else {
+          errorToast(
+            _selItem.name + "학생의 잔액 변경 도중 오류가 발생하였습니다."
+          );
+        }
       }
     }
   };
