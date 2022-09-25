@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import { numToStringAndComma } from "../../../../utils/comma";
 
 export default function StudentSelectList(props) {
   const [sortBy, setSortBy] = useState("number");
-  const [studentsData, setStudentsData] = useState(props.studentsData);
   const [selectedAll, setSelectedAll] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function StudentSelectList(props) {
             <button
               onClick={() => {
                 setSortBy("number");
-                setStudentsData(
+                props.setStudentsData(
                   props.studentsData.sort((a, b) => {
                     return a.number - b.number;
                   })
@@ -53,7 +53,7 @@ export default function StudentSelectList(props) {
             <button
               onClick={() => {
                 setSortBy("balance");
-                setStudentsData(
+                props.setStudentsData(
                   props.studentsData.sort((a, b) => {
                     return b.balance - a.balance;
                   })
@@ -68,13 +68,14 @@ export default function StudentSelectList(props) {
             </button>
           </div>
         </div>
-        {studentsData.map((student) => {
+        {props.studentsData.map((student) => {
           return (
             <StudentItem
-              key={student.id}
+              key={student.user_uuid}
               studentData={student}
               selectedStudent={props.selectedStudent}
               handleSelectedStudents={props.handleSelectedStudents}
+              bankData={props.bankData}
             />
           );
         })}
@@ -88,13 +89,15 @@ function StudentItem(props) {
     <div
       onClick={() => {
         props.handleSelectedStudents(
-          props.studentData.id,
+          props.studentData.user_uuid,
           props.studentData.name
         );
       }}
       className={`
-        flex items-center py-2 mb-2 cursor-pointer rounded-2xl hover:bg-neutral-200 hover:shadow-lg ${
-          props.selectedStudent.some((item) => item.id === props.studentData.id)
+        flex items-center py-2 mb-2 cursor-pointer rounded-2xl hover:shadow-xl ${
+          props.selectedStudent.some(
+            (item) => item.user_uuid === props.studentData.user_uuid
+          )
             ? "bg-blue-100"
             : ""
         }
@@ -106,7 +109,8 @@ function StudentItem(props) {
           <div className="font-semibold">{props.studentData.name}</div>
         </div>
         <div className="text-sm text-slate-400">
-          잔액 {props.studentData.balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          잔액 : {numToStringAndComma(props.studentData.balance)}{" "}
+          {props.bankData.money_name}
         </div>
       </div>
     </div>

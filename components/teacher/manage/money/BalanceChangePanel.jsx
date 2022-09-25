@@ -1,32 +1,53 @@
 import { useState } from "react";
-import { comma } from "../../../../utils/comma";
+import { comma, unComma } from "../../../../utils/comma";
+import { postChangeBalanceTeacher } from "../../../../apis/money";
+import { errorToast, sucessToast } from "../../../../utils/toast";
 
 export default function BalanceChangePanel(props) {
   const [changeBalanceAmout, setChangeBalanceAmount] = useState("");
-
   const [changeBalanceType, setChangeBalanceType] = useState("plus");
+  const [changeBalanceReason, setChangeBalanceReason] = useState("");
 
-  let selectedArray = [];
+  let selectedName = [];
   props.selectedStudent.map((_item) => {
-    selectedArray.push(_item.studentName);
+    selectedName.push(_item.name);
   });
 
+  const handlePostBalanceChange = async () => {
+    for await (const _selItem of props.selectedStudent) {
+      try {
+        const res = await postChangeBalanceTeacher(
+          _selItem.user_uuid,
+          changeBalanceType,
+          unComma(changeBalanceAmout),
+          changeBalanceReason
+        );
+        sucessToast(res.message);
+        props.getDataFromBackend();
+      } catch (err) {
+        console.log(err);
+        errorToast(err.response.data.message);
+      }
+    }
+  };
   return (
     <section className="">
       <h1 className="px-12 mt-6 text-2xl font-bold text-gray-400 md:px-20 md:text-3xl md:mt-20">
-        {selectedArray.join(", ")}
+        {selectedName.join(", ")}
       </h1>
-      <div className="flex flex-col px-12 md:px-20  max-w-[450px] md:w-[450px]">
-        <h1 className="mt-6 text-4xl font-bold md:text-5xl">학생(들) 에게</h1>
-        <div className="flex mt-5">
+      <div className="flex flex-col px-12 md:px-20  max-w-[500px] md:w-[500px]">
+        <h1 className="mt-6 text-3xl font-bold md:text-4xl">학생(들) 에게</h1>
+        <div className="flex items-center mt-5 ">
           <input
-            className="w-48 text-3xl font-bold bg-transparent border-b-4 md:text-4xl focus:outline-none"
+            className="text-3xl font-bold bg-transparent border-b-4 w-36 md:text-4xl focus:outline-none"
             value={changeBalanceAmout}
             onChange={(e) => {
               setChangeBalanceAmount(comma(e.target.value));
             }}
           />
-          <h1 className="text-4xl font-bold md:text-5xl ">원을 </h1>
+          <h1 className="text-3xl font-bold md:text-4xl">
+            {props.bankData.money_name}
+          </h1>
         </div>
         <div className="mt-6">
           <button
@@ -57,14 +78,21 @@ export default function BalanceChangePanel(props) {
           </button>
         </div>
 
-        <h1 className="mt-5 text-4xl font-bold md:text-5xl">합니다.</h1>
+        <h1 className="mt-5 text-3xl font-bold md:text-4xl">합니다.</h1>
 
         <input
           placeholder="사유 :"
-          className="w-48 mt-8 text-2xl font-bold bg-transparent border-b-4 md:text-3xl focus:outline-none"
+          value={changeBalanceReason}
+          onChange={(e) => {
+            setChangeBalanceReason(e.target.value);
+          }}
+          className="w-48 mt-8 text-2xl font-bold bg-transparent border-b-4 text-slate-400 md:text-3xl focus:outline-none"
         />
 
-        <button className="w-full py-3 font-semibold text-white bg-blue-500 mt-14 rounded-xl">
+        <button
+          onClick={handlePostBalanceChange}
+          className="w-full py-3 font-semibold text-white bg-blue-500 mt-14 rounded-xl"
+        >
           {changeBalanceType === "plus" ? "지급" : "회수"} 하기
         </button>
       </div>

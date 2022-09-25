@@ -22,6 +22,12 @@ export default function Join() {
     class_code: "",
   });
 
+  // const [onVerifyPhone, setOnVerifyPhone] = useState(false);
+  // const [verifyData, setVerifyData] = useState({
+  //   verfiyCode: "",
+  //   verifyToken: "",
+  // });
+
   const handleJoin = async (e) => {
     e.preventDefault();
     try {
@@ -115,16 +121,64 @@ export default function Join() {
                 className="w-full h-12 px-3 border-none bg-slate-100 rounded-xl text-slate-500 focus:ring-1 focus:ring-blue-500"
               />
               <p className="px-2 py-1 mt-2 text-sm text-slate-400">전화번호</p>
-              <input
-                type="tel"
-                value={userData.phone_number}
-                onChange={(e) => {
-                  if (numRegexChecker(e.target.value)) {
-                    setUserData({ ...userData, phone_number: e.target.value });
-                  }
-                }}
-                className="w-full h-12 px-3 border-none bg-slate-100 rounded-xl text-slate-500 focus:ring-1 focus:ring-blue-500"
-              />
+              <div className="flex">
+                <input
+                  maxLength="11"
+                  type="tel"
+                  value={userData.phone_number}
+                  onChange={(e) => {
+                    if (numRegexChecker(e.target.value)) {
+                      setUserData({
+                        ...userData,
+                        phone_number: e.target.value,
+                      });
+                      setOnVerifyPhone(false);
+                    }
+                  }}
+                  className="w-full h-12 px-3 border-none bg-slate-100 rounded-xl text-slate-500 focus:ring-1 focus:ring-blue-500"
+                />
+                {/* {!onVerifyPhone ? (
+                  <button
+                    onClick={() => {
+                      setOnVerifyPhone(true);
+                    }}
+                    className="w-24 ml-2 font-semibold text-white bg-blue-500 rounded-xl"
+                  >
+                    인증
+                  </button>
+                ) : null} */}
+              </div>
+              {/* {onVerifyPhone ? (
+                <>
+                  <p className="px-2 py-1 mt-2 text-sm text-slate-400">
+                    인증번호
+                  </p>
+                  <div className="flex">
+                    <input
+                      maxLength="6"
+                      type="tel"
+                      value={verifyData.verfiyCode}
+                      onChange={(e) => {
+                        if (numRegexChecker(e.target.value)) {
+                          setVerifyData({
+                            ...verifyData,
+                            verfiyCode: e.target.value,
+                          });
+                        }
+                      }}
+                      className="w-full h-12 px-3 border-none bg-slate-100 rounded-xl text-slate-500 focus:ring-1 focus:ring-blue-500"
+                    />
+                    <button
+                      onClick={() => {
+                        setOnVerifyPhone(true);
+                      }}
+                      className="w-24 ml-2 font-semibold text-white bg-blue-500 rounded-xl"
+                    >
+                      확인
+                    </button>
+                  </div>
+                </>
+              ) : null} */}
             </section>
             <hr className="w-full mt-8" />
             <section>
