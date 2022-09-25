@@ -1,4 +1,6 @@
 import moment from "moment";
+import { postCancelPurchase } from "../../../apis/purchase";
+import { errorToast, sucessToast } from "../../../utils/toast";
 
 export default function ItemPendingList(props) {
   return (
@@ -8,7 +10,13 @@ export default function ItemPendingList(props) {
       </h1>
       <div className="w-full p-3 bg-white min-h-[280px] rounded-2xl shadow-md">
         {props.pendingItems.map((item) => {
-          return <PendingItem key={item.itemId} itemData={item} />;
+          return (
+            <PendingItem
+              key={item.id}
+              itemData={item}
+              getDataFromBackend={props.getDataFromBackend}
+            />
+          );
         })}
       </div>
     </section>
@@ -19,12 +27,25 @@ function PendingItem(props) {
   return (
     <div className="flex items-center justify-between w-full h-12 p-4 mb-2 bg-neutral-100 rounded-xl">
       <div className="flex items-center">
-        <h1 className="text-sm font-semibold">{props.itemData.itemName}</h1>
+        <h1 className="text-sm font-semibold">{props.itemData.item_name}</h1>
         <p className="ml-2 text-xs text-slate-400">
-          {moment.unix(props.itemData.itemBuyDate).format("M월 DD일")}에 구입
+          {moment(props.itemData.createAt).format("M월 DD일")}
         </p>
       </div>
-      <button className="w-16 text-xs text-white bg-blue-500 h-7 rounded-2xl">
+      <button
+        onClick={async () => {
+          await postCancelPurchase(props.itemData.id)
+            .then((data) => {
+              sucessToast(data.message);
+            })
+            .catch((err) => {
+              console.log(err);
+              errorToast("아이템 구입 취소 중 오류가 발생하였습니다.");
+            });
+          props.getDataFromBackend();
+        }}
+        className="w-16 text-xs text-white bg-blue-500 h-7 rounded-2xl"
+      >
         취소하기
       </button>
     </div>

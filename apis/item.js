@@ -43,3 +43,12 @@ export const postItemDeny = async (_itemData) => {
   });
   return res.data;
 };
+
+// 여기 밑에부터 학생 API
+
+export const getItemsStudent = async (_bankId) => {
+  const res = await apiAuthInstance.get("/item/student", {
+    params: { bank_id: _bankId },
+  });
+  return res.data.items;
+};

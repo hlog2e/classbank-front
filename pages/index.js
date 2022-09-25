@@ -10,6 +10,9 @@ export default function Home() {
     CTalk.boot({
       pluginKey: process.env.NEXT_PUBLIC_CHTALK_PUBLIC_KEY,
     });
+    return () => {
+      CTalk.shutdown();
+    };
   }, []);
   return (
     <div className="h-screen bg-white ">
