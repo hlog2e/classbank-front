@@ -5,38 +5,23 @@ import BalanceLogsPanel from "../../components/student/home/BalanceLogsPanel";
 import AuthRoute from "../../middlewares/AuthRoute";
 import { getUserInfoStudent } from "../../apis/user";
 import { getBankInfoStudent } from "../../apis/bank";
+import { getAllbalanceLogs } from "../../apis/log";
 
 export default function StudentHome() {
   const [accountData, setAccountData] = useState({});
   const [bankInfo, setBankInfo] = useState({});
 
-  const [balanceLogs, setBalanceLogs] = useState([
-    {
-      id: "dsfafasd",
-      senderName: "선생님",
-      receiverName: "김홍록",
-      transactionType: "plus",
-      price: "10000",
-      reason: "송금하기",
-      timestamp: 1657848366,
-    },
-    {
-      id: "dsadfssdfsfsf",
-      senderName: "김홍록",
-      receiverName: "학생1",
-      transactionType: "minus",
-      price: "20000",
-      reason: "송금하기",
-      timestamp: 1657848366,
-    },
-  ]);
+  const [balanceLogs, setBalanceLogs] = useState([]);
 
   const getDataFromBackend = async () => {
-    const userData = await getUserInfoStudent();
-    setAccountData(userData);
+    const _userData = await getUserInfoStudent();
+    setAccountData(_userData);
 
-    const bankData = await getBankInfoStudent();
-    setBankInfo(bankData);
+    const _bankData = await getBankInfoStudent();
+    setBankInfo(_bankData);
+
+    const _balanceLogs = await getAllbalanceLogs();
+    setBalanceLogs(_balanceLogs);
   };
 
   useEffect(() => {
@@ -51,7 +36,11 @@ export default function StudentHome() {
             {bankInfo.name}
           </h1>
           <BalanceDisplay bankInfo={bankInfo} accountData={accountData} />
-          <BalanceLogsPanel bankInfo={bankInfo} balanceLogs={balanceLogs} />
+          <BalanceLogsPanel
+            bankInfo={bankInfo}
+            balanceLogs={balanceLogs}
+            accountData={accountData}
+          />
           <BottomNavBar />
         </div>
       </div>
