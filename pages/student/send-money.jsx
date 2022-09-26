@@ -6,6 +6,8 @@ import { getBankInfoStudent } from "../../apis/bank";
 import { getSameBankStudents, getUserInfoStudent } from "../../apis/user";
 import { postSendMoney } from "../../apis/money";
 import { errorToast, sucessToast } from "../../utils/toast";
+import LoadingPage from "../../components/common/LoadingPage";
+import DoneSendMoney from "../../components/teacher/send-money/DoneSendMoney";
 
 export default function StudentSendMoney() {
   //서버로 부터 받아온 데이터들
@@ -28,11 +30,31 @@ export default function StudentSendMoney() {
     getDataFromDB();
   }, []);
   //서버로 전송될 데이터들
-  const [receiver, setReceiver] = useState(0);
+  const [receiver, setReceiver] = useState();
   const [sendAmount, setSendAmount] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const [isDone, setIsDone] = useState(false);
+
+  const handleStateReset = () => {
+    setReceiver();
+    setSendAmount("");
+    setIsDone(false);
+  };
+
+  useEffect(() => {
+    console.log(receiver);
+  }, [receiver]);
 
   return (
     <AuthRoute isTeacherPage={false}>
+      <LoadingPage loading={loading} />
+      <DoneSendMoney
+        isDone={isDone}
+        handleStateReset={handleStateReset}
+        sendAmount={sendAmount}
+        bankInfo={bankInfo}
+      />
       <div className="fixed top-0 bottom-0 left-0 right-0 flex justify-center bg-neutral-200">
         <div className="max-w-[800px] w-full bg-neutral-100 overflow-auto pb-32">
           <h1 className="mt-12 ml-6 text-4xl font-bold">송금</h1>
@@ -40,13 +62,12 @@ export default function StudentSendMoney() {
             <div className="font-semibold ">
               <div className="flex items-center ">
                 <select
-                  value={receiver}
                   onChange={(e) => {
                     setReceiver(e.target.value);
                   }}
                   className="py-0 pl-0 text-lg bg-transparent border-0 focus:ring-0 text-slate-600"
                 >
-                  <option value="0" disabled>
+                  <option disabled selected>
                     학생 선택
                   </option>
                   {students.map((e) => {
@@ -81,14 +102,16 @@ export default function StudentSendMoney() {
             </p>
             <button
               onClick={() => {
+                setLoading(true);
                 postSendMoney(receiver, unComma(sendAmount))
                   .then((data) => {
                     sucessToast(data.message);
-                    setReceiver(0);
-                    setSendAmount("");
                     getDataFromDB();
+                    setLoading(false);
+                    setIsDone(true);
                   })
                   .catch((err) => {
+                    setLoading(false);
                     console.log(err);
                     if (err.response.data) {
                       errorToast(err.response.data.message);
