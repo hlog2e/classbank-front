@@ -11,7 +11,10 @@ import {
 } from "../utils/regex";
 import { errorToast } from "../utils/toast";
 
+import LoadingPage from "../components/common/LoadingPage";
+
 export default function Join() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [userData, setUserData] = useState({
     user_id: "",
@@ -31,6 +34,7 @@ export default function Join() {
   const handleJoin = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const user_data = await postJoin(userData);
       if (user_data.type === "teacher") {
         router.push("/teacher");
@@ -49,6 +53,7 @@ export default function Join() {
   };
   return (
     <div className="flex items-center justify-center w-full h-full px-6 py-12 ">
+      <LoadingPage loading={loading} />
       <div className="flex flex-col max-w-[400px] w-full px-8 bg-white rounded-3xl drop-shadow-2xl">
         <div className="flex items-center justify-between py-5 text-lg">
           <Logo />
@@ -132,7 +137,7 @@ export default function Join() {
                         ...userData,
                         phone_number: e.target.value,
                       });
-                      setOnVerifyPhone(false);
+                      // setOnVerifyPhone(false);
                     }
                   }}
                   className="w-full h-12 px-3 border-none bg-slate-100 rounded-xl text-slate-500 focus:ring-1 focus:ring-blue-500"
