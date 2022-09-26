@@ -22,6 +22,7 @@
     "react-icons": "^4.4.0",
     "react-lottie": "^1.2.3",
     "react-spinners": "^0.13.4",
+    "react-spring-bottom-sheet": "^3.4.1",
     "react-toastify": "^9.0.8"
   },
   "devDependencies": {
