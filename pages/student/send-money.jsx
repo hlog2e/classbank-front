@@ -105,7 +105,7 @@ export default function StudentSendMoney() {
                 setLoading(true);
                 postSendMoney(receiver, unComma(sendAmount))
                   .then((data) => {
-                    sucessToast(data.message);
+                    //sucessToast(data.message);
                     getDataFromDB();
                     setLoading(false);
                     setIsDone(true);
