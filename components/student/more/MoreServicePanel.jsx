@@ -15,7 +15,7 @@ export default function MoreServicePanel() {
         <GiReceiveMoney className="w-6 h-6 text-yellow-400" />
         <p className="ml-3 font-semibold">우리 학급 이자보기</p>
       </div>
-      <div
+      {/* <div
         onClick={() => {
           infoToast("개발 중 입니다!");
         }}
@@ -23,7 +23,7 @@ export default function MoreServicePanel() {
       >
         <FaMoneyBillWave className="w-6 h-6 text-green-300 " />
         <p className="ml-3 font-semibold">복권</p>
-      </div>
+      </div> */}
     </section>
   );
 }
