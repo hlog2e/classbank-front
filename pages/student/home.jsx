@@ -32,7 +32,7 @@ export default function StudentHome() {
     <AuthRoute isTeacherPage={false}>
       <div className="fixed top-0 bottom-0 left-0 right-0 flex justify-center bg-neutral-200">
         <div className="max-w-[800px] w-full bg-neutral-100 overflow-auto pb-32">
-          <h1 className="mt-12 ml-6 w-fit text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#56CCF2] to-[#2F80ED]">
+          <h1 className="mt-20 ml-6 w-fit text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#56CCF2] to-[#2F80ED]">
             {bankInfo.name}
           </h1>
           <BalanceDisplay bankInfo={bankInfo} accountData={accountData} />
