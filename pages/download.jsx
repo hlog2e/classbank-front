@@ -39,14 +39,21 @@ export default function Download() {
           >
             안드로이드 (갤럭시)
           </button>
-          <button
+          <a href="https://apps.apple.com/app/id6443821048">
+            <img
+              className="w-full mt-4 max-h-16"
+              src="/icons/download_appstore_kr.svg"
+            />
+          </a>
+
+          {/* <button
             onClick={() => {
               setIosOpen(true);
             }}
             className="w-full h-10 mt-5 text-base font-semibold text-white bg-blue-500 rounded-3xl "
           >
             IOS (아이폰)
-          </button>
+          </button> */}
         </div>
       </div>
       <AndroidBottomSheet
@@ -55,12 +62,12 @@ export default function Download() {
           setAndroidOpen(false);
         }}
       />
-      <IosBottomSheet
+      {/* <IosBottomSheet
         open={iosOpen}
         onDismiss={() => {
           setIosOpen(false);
         }}
-      />
+      /> */}
     </div>
   );
 }
@@ -95,39 +102,39 @@ function AndroidBottomSheet({ open, onDismiss }) {
   );
 }
 
-function IosBottomSheet({ open, onDismiss }) {
-  return (
-    <BottomSheet
-      open={open}
-      onDismiss={onDismiss}
-      footer={
-        <button
-          onClick={onDismiss}
-          className="w-full h-12 font-semibold text-white bg-blue-500 rounded-full"
-        >
-          닫기
-        </button>
-      }
-    >
-      <div className="p-4">
-        <p className="text-2xl font-semibold">IOS 앱 설치</p>
+// function IosBottomSheet({ open, onDismiss }) {
+//   return (
+//     <BottomSheet
+//       open={open}
+//       onDismiss={onDismiss}
+//       footer={
+//         <button
+//           onClick={onDismiss}
+//           className="w-full h-12 font-semibold text-white bg-blue-500 rounded-full"
+//         >
+//           닫기
+//         </button>
+//       }
+//     >
+//       <div className="p-4">
+//         <p className="text-2xl font-semibold">IOS 앱 설치</p>
 
-        <div className="flex items-center mt-5">
-          <p className="mt-2 font-semibold">STEP 1 : 하단에 해당 아이콘 클릭</p>
-          <img className="w-8 h-8 ml-2" src="/icons/ios_share.png" />
-        </div>
-        <div className="flex items-center mt-4">
-          <p className="font-semibold ">
-            STEP 2 : &quot;홈 화면에 추가&quot; 클릭
-          </p>
-          <img className="w-8 h-8 ml-2" src="/icons/ios_add.png" />
-        </div>
-        <div className="flex mt-4 font-semibold">
-          <p>STEP 3 : 우측 상단에 &quot;</p>
-          <p className="text-blue-500 ">추가</p>
-          <p>&quot; 클릭</p>
-        </div>
-      </div>
-    </BottomSheet>
-  );
-}
+//         <div className="flex items-center mt-5">
+//           <p className="mt-2 font-semibold">STEP 1 : 하단에 해당 아이콘 클릭</p>
+//           <img className="w-8 h-8 ml-2" src="/icons/ios_share.png" />
+//         </div>
+//         <div className="flex items-center mt-4">
+//           <p className="font-semibold ">
+//             STEP 2 : &quot;홈 화면에 추가&quot; 클릭
+//           </p>
+//           <img className="w-8 h-8 ml-2" src="/icons/ios_add.png" />
+//         </div>
+//         <div className="flex mt-4 font-semibold">
+//           <p>STEP 3 : 우측 상단에 &quot;</p>
+//           <p className="text-blue-500 ">추가</p>
+//           <p>&quot; 클릭</p>
+//         </div>
+//       </div>
+//     </BottomSheet>
+//   );
+// }
