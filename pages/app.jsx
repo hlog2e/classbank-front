@@ -4,7 +4,8 @@ import { getObjectItem } from "../utils/localStorage";
 
 export default function AppRouter() {
   const router = useRouter();
-  useEffect(() => {
+
+  const switching = async () => {
     const currentUser = getObjectItem("USERDATA");
     if (!currentUser) {
       router.replace("/login");
@@ -18,5 +19,8 @@ export default function AppRouter() {
           break;
       }
     }
+  };
+  useEffect(() => {
+    switching();
   }, []);
 }
