@@ -8,12 +8,12 @@ export default function TSideBarMenu() {
     { id: 2, name: "자산 관리", iconPath: "", path: "/teacher/manage/money" },
     { id: 3, name: "학생 관리", iconPath: "", path: "/teacher/manage/student" },
     { id: 4, name: "상품 관리", iconPath: "", path: "/teacher/manage/item" },
-    {
-      id: 5,
-      name: "복권 관리 (개발 중)",
-      iconPath: "",
-      path: "/teacher/manage/lotto",
-    },
+    // {
+    //   id: 5,
+    //   name: "복권 관리 (개발 중)",
+    //   iconPath: "",
+    //   path: "/teacher/manage/lotto",
+    // },
   ];
   return (
     <>
@@ -22,7 +22,7 @@ export default function TSideBarMenu() {
           <div className="text-2xl border-b border-b-slate-300 ">
             <Logo />
           </div>
-          <p className="font-medium  text-slate-500">선생님 페이지</p>
+          <p className="font-medium text-slate-500">선생님 페이지</p>
         </div>
         {menuList.map((item) => {
           return (
