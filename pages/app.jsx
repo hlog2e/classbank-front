@@ -6,7 +6,7 @@ export default function AppRouter() {
   const router = useRouter();
 
   const switching = async () => {
-    const currentUser = getObjectItem("USERDATA");
+    const currentUser = await getObjectItem("USERDATA");
     if (!currentUser) {
       router.replace("/login");
     } else {
