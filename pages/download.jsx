@@ -32,18 +32,12 @@ export default function Download() {
           자신의 운영체제 맞는 버튼을 눌러
         </p>
         <p className="text-base font-semibold ">앱을 설치해주세요!</p>
-        <div className="mt-32">
-          <button
-            onClick={handleInstallApp}
-            className="w-full h-10 text-base font-semibold text-white bg-blue-500 rounded-3xl "
-          >
-            안드로이드 (갤럭시)
-          </button>
+        <div className="flex flex-col items-center justify-center mt-32">
+          <a href="https://play.google.com/store/apps/details?id=com.hlog2e.classbankapp">
+            <img className="h-20 mt-4" src="/icons/google-play-badge.png" />
+          </a>
           <a href="https://apps.apple.com/app/id6443821048">
-            <img
-              className="w-full mt-4 max-h-16"
-              src="/icons/download_appstore_kr.svg"
-            />
+            <img className="h-16 mt-4" src="/icons/download_appstore_kr.svg" />
           </a>
 
           {/* <button
@@ -56,12 +50,12 @@ export default function Download() {
           </button> */}
         </div>
       </div>
-      <AndroidBottomSheet
+      {/* <AndroidBottomSheet
         open={androidOpen}
         onDismiss={() => {
           setAndroidOpen(false);
         }}
-      />
+      /> */}
       {/* <IosBottomSheet
         open={iosOpen}
         onDismiss={() => {
@@ -72,35 +66,35 @@ export default function Download() {
   );
 }
 
-function AndroidBottomSheet({ open, onDismiss }) {
-  return (
-    <BottomSheet
-      open={open}
-      onDismiss={onDismiss}
-      footer={
-        <button
-          onClick={onDismiss}
-          className="w-full h-12 font-semibold text-white bg-blue-500 rounded-full"
-        >
-          닫기
-        </button>
-      }
-    >
-      <div className="p-4">
-        <p className="text-2xl font-semibold">앱이 설치되지 않나요?</p>
+// function AndroidBottomSheet({ open, onDismiss }) {
+//   return (
+//     <BottomSheet
+//       open={open}
+//       onDismiss={onDismiss}
+//       footer={
+//         <button
+//           onClick={onDismiss}
+//           className="w-full h-12 font-semibold text-white bg-blue-500 rounded-full"
+//         >
+//           닫기
+//         </button>
+//       }
+//     >
+//       <div className="p-4">
+//         <p className="text-2xl font-semibold">앱이 설치되지 않나요?</p>
 
-        <div className="flex items-center mt-5">
-          <p>우측 상단에 해당 아이콘을 확인해주세요!</p>
-          <img className="h-8 ml-2 w-7" src="/icons/android_download.png" />
-        </div>
-        <p className="mt-3 font-semibold">
-          해당 아이콘이 없다면, 아직 설치가 준비되지 않은 것입니다. 잠시 후에
-          다시 시도해주세요.
-        </p>
-      </div>
-    </BottomSheet>
-  );
-}
+//         <div className="flex items-center mt-5">
+//           <p>우측 상단에 해당 아이콘을 확인해주세요!</p>
+//           <img className="h-8 ml-2 w-7" src="/icons/android_download.png" />
+//         </div>
+//         <p className="mt-3 font-semibold">
+//           해당 아이콘이 없다면, 아직 설치가 준비되지 않은 것입니다. 잠시 후에
+//           다시 시도해주세요.
+//         </p>
+//       </div>
+//     </BottomSheet>
+//   );
+// }
 
 // function IosBottomSheet({ open, onDismiss }) {
 //   return (
