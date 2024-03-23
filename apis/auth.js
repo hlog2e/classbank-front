@@ -27,3 +27,15 @@ export const postLogout = async () => {
   alert("로그아웃 되었습니다.");
   return res.data;
 };
+
+export const postChangeStudentPassword = async ({
+  oldPassword,
+  newPassword,
+}) => {
+  const { data } = await apiAuthInstance.post("/auth/password-change/student", {
+    oldPassword,
+    newPassword,
+  });
+
+  return data;
+};

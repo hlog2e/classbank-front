@@ -14,6 +14,12 @@ export default function Login() {
     e.preventDefault();
     try {
       const user_data = await postLogin(userData);
+
+      // 만약 비밀번호가 선생님에 의해 초기화 된 상태라면 비밀번호 변경 페이지로 리다이렉트
+      if (user_data.password_change_required) {
+        return router.push("/password-change");
+      }
+
       if (user_data.type === "teacher") {
         router.push("/teacher");
       }

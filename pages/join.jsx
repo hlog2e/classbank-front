@@ -43,7 +43,9 @@ export default function Join() {
         router.push("/student");
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
+
       if (err.response.data) {
         errorToast(err.response.data.message);
       } else {
