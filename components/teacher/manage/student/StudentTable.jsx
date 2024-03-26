@@ -1,6 +1,10 @@
 import moment from "moment";
 import { useState } from "react";
-import { postEditUserInfoTeacher } from "../../../../apis/user";
+import {
+  postDeleteStudentByTeacher,
+  postEditUserInfoTeacher,
+  postResetPasswordByTeacher,
+} from "../../../../apis/user";
 import {
   korAndEngRegexChecker,
   lowEngAndNumRegexChecker,
@@ -14,15 +18,7 @@ export default function StudentTable(props) {
       <p className="ml-3 text-2xl font-semibold text-slate-500">
         선택된 학생 {props.selectedStudent.length}명
       </p>
-      <header className="h-12 m-2 ">
-        <button className="px-3 py-2 m-1 font-semibold text-white bg-blue-500 rounded-xl">
-          비밀번호 초기화
-        </button>
-        <button className="px-3 py-2 m-1 font-semibold text-white bg-blue-500 rounded-xl">
-          회원탈퇴
-        </button>
-      </header>
-      <div className="bg-white w-[900px] py-6 px-6 rounded-3xl drop-shadow-lg">
+      <div className="mt-6 bg-white w-[900px] py-6 px-6 rounded-3xl drop-shadow-lg">
         <table className="w-full border-separate border-spacing-0">
           <thead className=" bg-slate-100">
             <tr className="h-12 border-b ">
@@ -43,7 +39,9 @@ export default function StudentTable(props) {
               <th className="w-36">아이디</th>
               <th className="w-36">전화번호</th>
               <th className="w-32 ">가입일자</th>
-              <th className="w-16 rounded-r-xl">수정</th>
+              <th className="w-16 ">수정</th>
+              <th className="w-40 ">비밀번호 초기화</th>
+              <th className="w-28 rounded-r-xl">회원탈퇴</th>
             </tr>
           </thead>
           <tbody>
@@ -51,6 +49,7 @@ export default function StudentTable(props) {
               return (
                 <StudentTableItem
                   key={item.user_uuid}
+                  refetch={props.refetch}
                   studentData={item}
                   selectedStudent={props.selectedStudent}
                   handleSelectedStudents={props.handleSelectedStudents}
@@ -164,6 +163,34 @@ function StudentTableItem(props) {
           className="px-3 py-1 text-white bg-blue-500 rounded-xl"
         >
           {!editing ? "수정" : "완료"}
+        </button>
+      </td>
+
+      <td className="px-1 rounded-r-xl">
+        <button
+          onClick={async () => {
+            const data = await postResetPasswordByTeacher(
+              studentData.user_uuid
+            );
+            sucessToast(data.message);
+          }}
+          className="px-5 py-1 m-1 font-semibold text-white bg-red-500 rounded-xl"
+        >
+          초기화
+        </button>
+      </td>
+      <td className="px-1 rounded-r-xl">
+        <button
+          onClick={async () => {
+            const data = await postDeleteStudentByTeacher(
+              studentData.user_uuid
+            );
+            sucessToast(data.message);
+            props.refetch();
+          }}
+          className="px-3 py-1 m-1 font-semibold text-white bg-red-500 rounded-xl"
+        >
+          탈퇴
         </button>
       </td>
     </tr>

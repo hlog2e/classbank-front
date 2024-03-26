@@ -33,10 +33,15 @@ export default function Student() {
     }
   }
 
+  const fetchPageData = async () => {
+    const bankData = await getTeacherBankInfo();
+    const users = await getAllUserTeacher(bankData.id);
+
+    setStudentsInfo(users);
+  };
+
   useEffect(() => {
-    getTeacherBankInfo().then((_bankData) => {
-      getAllUserTeacher(_bankData.id).then((_users) => setStudentsInfo(_users));
-    });
+    fetchPageData();
   }, []);
 
   return (
@@ -45,11 +50,10 @@ export default function Student() {
         <TSideBar />
         <section className="w-full overflow-scroll lg:ml-64 ">
           <section>
-            <h1 className="px-10 mt-16 text-5xl font-bold lg:mt-20 lg:px-20">
-              학생 관리
-            </h1>
+            <h1 className="mt-16 ml-10 text-5xl font-bold ">학생 관리</h1>
           </section>
           <StudentTable
+            refetch={fetchPageData}
             studentsInfo={studentsInfo}
             selectedStudent={selectedStudent}
             handleSelectedStudents={handleSelectedStudents}

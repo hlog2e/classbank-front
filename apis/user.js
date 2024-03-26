@@ -15,6 +15,20 @@ export const postEditUserInfoTeacher = async (_userUuid, _changeDataObj) => {
   return res.data;
 };
 
+export const postResetPasswordByTeacher = async (_studentId) => {
+  const { data } = await apiAuthInstance.post("/user/teacher/reset-password", {
+    studentId: _studentId,
+  });
+  return data;
+};
+
+export const postDeleteStudentByTeacher = async (_studentId) => {
+  const { data } = await apiAuthInstance.post("/user/teacher/delete-student", {
+    studentId: _studentId,
+  });
+
+  return data;
+};
 //아래부터는 학생 API
 
 export const getUserInfoStudent = async () => {
